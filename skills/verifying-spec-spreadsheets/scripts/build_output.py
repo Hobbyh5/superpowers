@@ -71,6 +71,10 @@ FLAG_FILL = PatternFill("solid", fgColor="FCE4D6")       # orange-ish = needs re
 THIN = Side(style="thin", color="D9D9D9")
 BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 
+# Separators on the flat Spec List: thin blue between properties, thick blue between divisions.
+PROP_BLUE = Side(style="thin", color="2E75B6")
+DIV_BLUE = Side(style="thick", color="1F4E78")
+
 
 def _style_header(ws, ncols):
     for c in range(1, ncols + 1):
@@ -129,9 +133,20 @@ def build(src_path, out_path, payload):
     ws = wb.active
     ws.title = "Spec List"
     ws.append(FLAT_HEADERS)
+    prop_boundaries = []   # output rows that begin a new property
+    div_boundaries = []    # output rows that begin a new division
+    prev_division = None
+    first_block = True
     for c in communities:
         rows = c.floor_plans if c.floor_plans else [FloorPlan()]
         for i, fp in enumerate(rows):
+            if i == 0 and not first_block:
+                start_row = ws.max_row + 1
+                if c.division != prev_division:
+                    div_boundaries.append(start_row)
+                else:
+                    prop_boundaries.append(start_row)
+            first_block = False
             row = [
                 c.division if i == 0 else None,
                 c.property_name if i == 0 else None,
@@ -155,11 +170,29 @@ def build(src_path, out_path, payload):
             elif c.status == "needs_research" and i == 0:
                 for cc in range(1, len(FLAT_HEADERS) + 1):
                     ws.cell(row=r, column=cc).fill = FLAG_FILL
+        prev_division = c.division
     _style_header(ws, len(FLAT_HEADERS))
     ws.freeze_panes = "A2"
     widths = [14, 28, 13, 22, 46, 13, 14, 18, 18, 10, 8, 8, 9, 30, 24, 15, 11, 46]
     for i, w in enumerate(widths, 1):
         ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
+
+    # Excel autofilter (dropdowns on every column, incl. Division, Property Name,
+    # Product Type, Lot Width, Stories, Garages, Floor Plan).
+    ws.auto_filter.ref = f"A1:{openpyxl.utils.get_column_letter(len(FLAT_HEADERS))}{ws.max_row}"
+
+    # Separator borders: thin blue between properties, thick blue between divisions.
+    # Applied as a top border across the row that begins each new block.
+    def _top_border(row_idx, side):
+        for cc in range(1, len(FLAT_HEADERS) + 1):
+            cell = ws.cell(row=row_idx, column=cc)
+            b = cell.border
+            cell.border = Border(top=side, left=b.left, right=b.right, bottom=b.bottom)
+
+    for r in prop_boundaries:
+        _top_border(r, PROP_BLUE)
+    for r in div_boundaries:   # division wins over property where both could apply
+        _top_border(r, DIV_BLUE)
 
     # ---- Sheet 2: Communities ----
     ws2 = wb.create_sheet("Communities")

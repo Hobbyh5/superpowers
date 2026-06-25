@@ -1,90 +1,2611 @@
 {
-  "_meta": {
-    "builder": "Dream Finders Homes (DFH)",
-    "research_date": "2026-06-25",
-    "constraint": "dreamfindershomes.com and coventryhomes.com are blocked by this environment's egress policy (403 on CONNECT). Data below is from WebSearch result snippets quoting those sites plus accessible third-party sources (news, MLS/aggregators). Confidence is therefore capped at 'medium'. Community-precise lat/long could not be confirmed for any blank community (only city-level), so per policy it is LEFT BLANK and flagged.",
-    "brand_aliases": {
-      "Austin": "Coventry Homes",
-      "Houston": "Coventry Homes",
-      "Dallas": "Coventry Homes",
-      "San Antonio": "Coventry Homes"
-    }
-  },
-  "verifications": {
-    "5": {
-      "website_ok": "blocked (URL well-formed; policy 403 on fetch)",
-      "latlong_plausible": "yes (~1.7 mi S of Temple, GA center 33.74,-85.03)",
-      "plans_checked": "unconfirmed (live page fetch blocked by egress policy)",
-      "discrepancies": "None detectable; could not fetch live page to compare plans/prices.",
-      "source": "https://dreamfindershomes.com/new-homes/ga/temple/azalea-hills/"
-    },
-    "69": {
-      "website_ok": "blocked (page exists per search index; policy 403 on fetch)",
-      "latlong_plausible": "yes (~1.5 mi S of Westminster, CO center 39.84,-105.04)",
-      "plans_checked": "partial — Arbor 1806SF, Berkeley 2142SF, Vrain 2338SF consistent with sheet; Crescent and the Paired plans not surfaced; prices unconfirmed",
-      "discrepancies": "Search surfaced townhome plans 'Terrain 1406SF' and 'Foothills 1507SF' not present in the sheet; the sheet's generic 'Townhomes 1535+' row may be stale. Prices could not be revalidated (fetch blocked).",
-      "source": "https://dreamfindershomes.com/new-homes/co/westminster/uplands/"
-    }
-  },
-  "enrichments": {
-    "34": {
-      "builder_brand": "Dream Finders Homes",
-      "website": {"value": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/", "source": "DFH community + Aspen subpage; LaGrange News ribbon-cutting", "confidence": "medium"},
-      "delivery": {"value": "Active", "source": "DFH listings show move-in-ready homes", "confidence": "medium"},
-      "amenities": {"value": "Playground, community pavilion", "source": "LaGrange News; thecobbgroup", "confidence": "medium"},
-      "hoa": {"value": "$600 initiation; ~$1,200/yr ($100/mo)", "source": "thecobbgroup.com", "confidence": "medium"},
-      "floor_plans": [
-        {"plan": "Aspen", "unit_type": "3 Bed / 2.5 Bath", "base_price": 249990, "sf": 1579, "stories": 2, "garages": 2, "lot_width": null, "product": "Townhome", "source": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/aspen/", "confidence": "medium"}
-      ],
-      "notes": "DFH community in Hogansville, GA (Troup Co.). Only one plan (Aspen) offered; 136-townhome community. LAT/LONG LEFT BLANK — only city-level 33.1732,-84.9149 (Hogansville) found, not community-precise. Lot width not published."
-    },
-    "129": {
-      "builder_brand": "Coventry Homes (DFH Texas brand)",
-      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/hockley/cypress-green/", "source": "Coventry community page (via search snippets)", "confidence": "medium"},
-      "delivery": {"value": "Active", "source": "Quick move-in homes listed 2025-2026", "confidence": "medium"},
-      "amenities": {"value": "Pool, splash pad, fitness center, playgrounds, parks, trails, sport courts, clubhouse", "source": "cypressgreentx.com; HAR listings", "confidence": "medium"},
-      "hoa": {"value": "~$83/mo (~$996/yr)", "source": "HAR.com / community listings", "confidence": "medium"},
-      "floor_plans": [
-        {"plan": "Hill", "unit_type": "3 Bed / 2 Bath", "base_price": 299990, "sf": 1568, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/hill/", "confidence": "medium"},
-        {"plan": "Wise", "unit_type": "3 Bed / 2 Bath", "base_price": 318990, "sf": 1626, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/wise/", "confidence": "medium"},
-        {"plan": "Moore", "unit_type": "4 Bed / 3.5 Bath", "base_price": 329990, "sf": 2246, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/moore/", "confidence": "medium"},
-        {"plan": "Reeves", "unit_type": "5 Bed / 2.5 Bath", "base_price": 352990, "sf": 2526, "stories": 2, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/reeves/", "confidence": "medium"}
-      ],
-      "notes": "DFH builds as Coventry Homes in Houston. Plans (Hill/Wise/Moore/Reeves) are the Coventry Cypress Green lineup; the sheet's '45' / Section 23' lot-width & section filter could NOT be confirmed in public sources — these may include non-45' plans. Verify exact 45'/Sec.23 subset with sales office. LAT/LONG LEFT BLANK — only Hockley city-level 30.0228,-95.8400 found."
-    },
-    "41": {
-      "builder_brand": "Coventry Homes (DFH Texas brand)",
-      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-45/", "source": "Coventry Briarwood 45' page (via search snippets)", "confidence": "medium"},
-      "delivery": {"value": "Active", "source": "Homes available for sale", "confidence": "medium"},
-      "amenities": {"value": "Community pool(s), walking trails, parks, greenbelts, pond (205-acre master plan)", "source": "briarwoodatx.com; newhomesource", "confidence": "medium"},
-      "floor_plans": [
-        {"plan": "Potter", "unit_type": "3 Bed / 2 Bath", "base_price": 289990, "sf": 1372, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Wise", "unit_type": "3 Bed / 2 Bath", "base_price": 302990, "sf": 1582, "stories": 1, "garages": 2, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Cooke", "unit_type": "4 Bed / 2 Bath", "base_price": 308990, "sf": 1694, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Gregg", "unit_type": "3 Bed / 2.5 Bath", "base_price": 317990, "sf": 1899, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Llana", "unit_type": "4 Bed / 2.5 Bath", "base_price": 324990, "sf": 2073, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Ellis", "unit_type": "4 Bed / 3 Bath", "base_price": 315990, "sf": 1849, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Moore", "unit_type": "4 Bed / 3.5 Bath", "base_price": 331990, "sf": 2224, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
-        {"plan": "Reeves", "unit_type": "5 Bed / 2.5 Bath", "base_price": 356990, "sf": 2488, "stories": 2, "garages": 2, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"}
-      ],
-      "notes": "DFH builds as Coventry Homes in Austin; community is in Elgin, TX (Bastrop Co.). STORIES/GARAGES LEFT BLANK on most plans — research surfaced them only as inferred, not confirmed. HOA LEFT BLANK — sources conflicted ($1,150/yr on one HOA site vs 'no HOA' elsewhere). LAT/LONG LEFT BLANK — only Elgin city-level 30.3497,-97.3703 found."
-    },
-    "42": {
-      "builder_brand": "Coventry Homes (DFH Texas brand)",
-      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-50/", "source": "Coventry Briarwood 50' page (via search snippets)", "confidence": "medium"},
-      "delivery": {"value": "Active", "source": "Homes available for sale", "confidence": "medium"},
-      "notes": "DFH/Coventry, Elgin TX. WEBSITE confirmed but FLOOR PLANS LEFT BLANK — the 50' lineup is ~6 plans, 1,669-2,521 SF, 4-5 bed, $284,900-$322,990 per search ranges, but individual plan NAMES/specs were NOT found publicly. Needs sales-office confirmation. LAT/LONG LEFT BLANK (Elgin city-level only)."
-    },
-    "199": {
-      "builder_brand": "Dream Finders Homes",
-      "website": {"value": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/", "source": "DFH community page; bdmag/Phoenix Agent launch coverage", "confidence": "medium"},
-      "delivery": {"value": "Upcoming (Spring 2026 sales launch)", "source": "bdmag.com; phoenixagentmagazine", "confidence": "medium"},
-      "amenities": {"value": "Pool, splash pad, multiple playgrounds, sport courts (basketball/volleyball/pickleball), dog parks, walking trails, 3 community parks", "source": "northcoppercanyon.com", "confidence": "medium"},
-      "hoa": {"value": "$62/mo", "source": "dgpaz.com community listing", "confidence": "medium"},
-      "floor_plans": [
-        {"plan": "Alamo", "unit_type": "3 Bed / 2 Bath", "base_price": null, "sf": null, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/alamo/", "confidence": "low"}
-      ],
-      "notes": "DFH's Surprise, AZ community (Phoenix division), 45'x120' homesites, 125 DFH homesites planned. PRE-LAUNCH (spring 2026): only the 'Alamo' plan is announced and its SF/PRICE/STORIES/GARAGES are NOT yet published — LEFT BLANK. LAT/LONG LEFT BLANK — only Surprise city-level ~33.66,-112.37 found."
-    }
+ "_meta": {
+  "builder": "Dream Finders Homes (DFH)",
+  "research_date": "2026-06-25",
+  "constraint": "dreamfindershomes.com and coventryhomes.com are blocked by this environment's egress policy (403 on CONNECT). Data below is from WebSearch result snippets quoting those sites plus accessible third-party sources (news, MLS/aggregators). Confidence is therefore capped at 'medium'. Community-precise lat/long could not be confirmed for any blank community (only city-level), so per policy it is LEFT BLANK and flagged.",
+  "brand_aliases": {
+   "Austin": "Coventry Homes",
+   "Houston": "Coventry Homes",
+   "Dallas": "Coventry Homes",
+   "San Antonio": "Coventry Homes"
   }
+ },
+ "verifications": {
+  "5": {
+   "website_ok": "blocked (URL well-formed; policy 403 on fetch)",
+   "latlong_plausible": "yes (~1.7 mi S of Temple, GA center 33.74,-85.03)",
+   "plans_checked": "unconfirmed (live page fetch blocked by egress policy)",
+   "discrepancies": "None detectable; could not fetch live page to compare plans/prices.",
+   "source": "https://dreamfindershomes.com/new-homes/ga/temple/azalea-hills/"
+  },
+  "69": {
+   "website_ok": "blocked (page exists per search index; policy 403 on fetch)",
+   "latlong_plausible": "yes (~1.5 mi S of Westminster, CO center 39.84,-105.04)",
+   "plans_checked": "partial \u2014 Arbor 1806SF, Berkeley 2142SF, Vrain 2338SF consistent with sheet; Crescent and the Paired plans not surfaced; prices unconfirmed",
+   "discrepancies": "Search surfaced townhome plans 'Terrain 1406SF' and 'Foothills 1507SF' not present in the sheet; the sheet's generic 'Townhomes 1535+' row may be stale. Prices could not be revalidated (fetch blocked).",
+   "source": "https://dreamfindershomes.com/new-homes/co/westminster/uplands/"
+  }
+ },
+ "enrichments": {
+  "34": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/",
+    "source": "DFH community + Aspen subpage; LaGrange News ribbon-cutting",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "DFH listings show move-in-ready homes",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Playground, community pavilion",
+    "source": "LaGrange News; thecobbgroup",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$600 initiation; ~$1,200/yr ($100/mo)",
+    "source": "thecobbgroup.com",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Aspen",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": 249990,
+     "sf": 1579,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/aspen/",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "DFH community in Hogansville, GA (Troup Co.). Only one plan (Aspen) offered; 136-townhome community. LAT/LONG LEFT BLANK \u2014 only city-level 33.1732,-84.9149 (Hogansville) found, not community-precise. Lot width not published."
+  },
+  "129": {
+   "builder_brand": "Coventry Homes (DFH Texas brand)",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/hockley/cypress-green/",
+    "source": "Coventry community page (via search snippets)",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "Quick move-in homes listed 2025-2026",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Pool, splash pad, fitness center, playgrounds, parks, trails, sport courts, clubhouse",
+    "source": "cypressgreentx.com; HAR listings",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$83/mo (~$996/yr)",
+    "source": "HAR.com / community listings",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Hill",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 299990,
+     "sf": 1568,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com/.../cypress-green/hill/",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wise",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 318990,
+     "sf": 1626,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com/.../cypress-green/wise/",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Moore",
+     "unit_type": "4 Bed / 3.5 Bath",
+     "base_price": 329990,
+     "sf": 2246,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com/.../cypress-green/moore/",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Reeves",
+     "unit_type": "5 Bed / 2.5 Bath",
+     "base_price": 352990,
+     "sf": 2526,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com/.../cypress-green/reeves/",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "DFH builds as Coventry Homes in Houston. Plans (Hill/Wise/Moore/Reeves) are the Coventry Cypress Green lineup; the sheet's '45' / Section 23' lot-width & section filter could NOT be confirmed in public sources \u2014 these may include non-45' plans. Verify exact 45'/Sec.23 subset with sales office. LAT/LONG LEFT BLANK \u2014 only Hockley city-level 30.0228,-95.8400 found."
+  },
+  "41": {
+   "builder_brand": "Coventry Homes (DFH Texas brand)",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-45/",
+    "source": "Coventry Briarwood 45' page (via search snippets)",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "Homes available for sale",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Community pool(s), walking trails, parks, greenbelts, pond (205-acre master plan)",
+    "source": "briarwoodatx.com; newhomesource",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Potter",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 289990,
+     "sf": 1372,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wise",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 302990,
+     "sf": 1582,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Cooke",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 308990,
+     "sf": 1694,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Gregg",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": 317990,
+     "sf": 1899,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Llana",
+     "unit_type": "4 Bed / 2.5 Bath",
+     "base_price": 324990,
+     "sf": 2073,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Ellis",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 315990,
+     "sf": 1849,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Moore",
+     "unit_type": "4 Bed / 3.5 Bath",
+     "base_price": 331990,
+     "sf": 2224,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Reeves",
+     "unit_type": "5 Bed / 2.5 Bath",
+     "base_price": 356990,
+     "sf": 2488,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "Coventry/DFH Briarwood 45 (search snippet)",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "DFH builds as Coventry Homes in Austin; community is in Elgin, TX (Bastrop Co.). STORIES/GARAGES LEFT BLANK on most plans \u2014 research surfaced them only as inferred, not confirmed. HOA LEFT BLANK \u2014 sources conflicted ($1,150/yr on one HOA site vs 'no HOA' elsewhere). LAT/LONG LEFT BLANK \u2014 only Elgin city-level 30.3497,-97.3703 found."
+  },
+  "42": {
+   "builder_brand": "Coventry Homes (DFH Texas brand)",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-50/",
+    "source": "Coventry Briarwood 50' page (via search snippets)",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "Homes available for sale",
+    "confidence": "medium"
+   },
+   "notes": "DFH/Coventry, Elgin TX. WEBSITE confirmed but FLOOR PLANS LEFT BLANK \u2014 the 50' lineup is ~6 plans, 1,669-2,521 SF, 4-5 bed, $284,900-$322,990 per search ranges, but individual plan NAMES/specs were NOT found publicly. Needs sales-office confirmation. LAT/LONG LEFT BLANK (Elgin city-level only)."
+  },
+  "199": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/",
+    "source": "DFH community page; bdmag/Phoenix Agent launch coverage",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Upcoming (Spring 2026 sales launch)",
+    "source": "bdmag.com; phoenixagentmagazine",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Pool, splash pad, multiple playgrounds, sport courts (basketball/volleyball/pickleball), dog parks, walking trails, 3 community parks",
+    "source": "northcoppercanyon.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$62/mo",
+    "source": "dgpaz.com community listing",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Alamo",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": null,
+     "sf": null,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/alamo/",
+     "confidence": "low"
+    }
+   ],
+   "notes": "DFH's Surprise, AZ community (Phoenix division), 45'x120' homesites, 125 DFH homesites planned. PRE-LAUNCH (spring 2026): only the 'Alamo' plan is announced and its SF/PRICE/STORIES/GARAGES are NOT yet published \u2014 LEFT BLANK. LAT/LONG LEFT BLANK \u2014 only Surprise city-level ~33.66,-112.37 found."
+  },
+  "130": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-45/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-45/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Catch-and-release fishing lake, playground, pavilion, exercise equipment, park; nearby Unity Park (trails, wetlands)",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$389/mo (median, Maison Property Mgmt)",
+    "source": "tx-hoa.net",
+    "confidence": "low"
+   },
+   "floor_plans": [
+    {
+     "plan": "Muenster",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 274990,
+     "sf": 1644,
+     "stories": null,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Progreso",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 314990,
+     "sf": 2122,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Gunter",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 304990,
+     "sf": 2066,
+     "stories": 1,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Bloomburg",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 334990,
+     "sf": 2475,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Covington",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": null,
+     "sf": 2421,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Coventry=DFH Texas brand. Magnolia, TX 77354. 'Section 5' not confirmed in public sources. LAT/LONG BLANK (city-level only). Builder site 403; specs from search snippets."
+  },
+  "131": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-50/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-50/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Catch-and-release fishing lake, playground, pavilion, exercise equipment; nearby Unity Park",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$389/mo (median, Maison Property Mgmt)",
+    "source": "tx-hoa.net",
+    "confidence": "low"
+   },
+   "floor_plans": [
+    {
+     "plan": "Portland",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 304990,
+     "sf": 1677,
+     "stories": 1,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Kempner",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 349990,
+     "sf": 2493,
+     "stories": null,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Justin",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 359990,
+     "sf": 2594,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Chappel Hill",
+     "unit_type": "4 Bed / 4 Bath",
+     "base_price": null,
+     "sf": 2995,
+     "stories": null,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Magnolia, TX. 'Section 7' not confirmed. LAT/LONG BLANK (city-level only)."
+  },
+  "132": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-60/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/magnolia/escondido-60/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Catch-and-release fishing lake, playground, pavilion; nearby Unity Park",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$389/mo (median, Maison Property Mgmt)",
+    "source": "tx-hoa.net",
+    "confidence": "low"
+   },
+   "floor_plans": [
+    {
+     "plan": "Gordon",
+     "unit_type": "4 Bed / 3.5 Bath",
+     "base_price": 434990,
+     "sf": 3221,
+     "stories": 1,
+     "garages": 3,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Fulshear",
+     "unit_type": "4 Bed / 3.5 Bath",
+     "base_price": null,
+     "sf": null,
+     "stories": 1,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Magnolia, TX. 'Section 9' not confirmed. LAT/LONG BLANK (city-level only)."
+  },
+  "134": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/katy/sofi-lakes/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/katy/sofi-lakes/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "SoFi Mile Park, walking trails, community pool, clubhouse, fitness center",
+    "source": "sofilakes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Kent",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": null,
+     "sf": null,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Katy, TX 77493 (Waller Co.). Coming soon; only the Kent plan confirmed for 40', price NOT FOUND. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "135": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/katy/sofi-lakes/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/katy/sofi-lakes/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "SoFi Mile Park, walking trails, community pool, clubhouse, fitness center",
+    "source": "sofilakes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "Katy, TX. 50' lineup: plan names/specs/prices NOT FOUND publicly (community ~2,050-4,010 SF range). FLOOR PLANS BLANK. HOA/LAT-LONG BLANK."
+  },
+  "136": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/crosby/sundance-cove/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/crosby/sundance-cove/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Pool, splash pad, amenity center, scenic trails, marina w/ Lake Houston access, playground, fitness center, clubhouse",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "Crosby, TX 77532. Coming soon; Coventry 40' plan names/specs/prices NOT FOUND. HOA conflicting ($62/mo vs $434/mo by section) -> BLANK. LAT/LONG BLANK."
+  },
+  "137": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/crosby/sundance-cove/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/crosby/sundance-cove/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Pool, splash pad, amenity center, scenic trails, marina access, playground, fitness center, clubhouse",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "Crosby, TX. 50' lineup plan names/specs NOT FOUND. HOA conflicting -> BLANK. LAT/LONG BLANK."
+  },
+  "138": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/conroe/westridge-cove-40/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/conroe/westridge-cove-40/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active (selling)",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Resort-style pool w/ 2-story waterslide, fitness center, playground, greenbelt, recreation complex",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$66/mo ($790/yr)",
+    "source": "Jome/HAR",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Frio",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 249990,
+     "sf": 1400,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Gray",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 254990,
+     "sf": 1433,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Hill",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 264990,
+     "sf": 1532,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Kerr",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": 264990,
+     "sf": 1647,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Kent",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": 269990,
+     "sf": 1543,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "King",
+     "unit_type": "3 Bed / 2.5 Bath",
+     "base_price": 279990,
+     "sf": 1792,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Lynn",
+     "unit_type": "4 Bed / 2.5 Bath",
+     "base_price": 299990,
+     "sf": 2192,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Conroe, TX 77304. LAT/LONG BLANK (12048 Moonlight Path Dr; city-level only)."
+  },
+  "139": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/conroe/westridge-cove-50/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/conroe/westridge-cove-50/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active (selling)",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Resort-style pool w/ 2-story waterslide, fitness center, playground, greenbelt, recreation complex",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$66/mo ($790/yr)",
+    "source": "Jome/HAR",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Rains",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 269990,
+     "sf": 1446,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Smith",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 279990,
+     "sf": 1596,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Starr",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 289990,
+     "sf": 1669,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Upton",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 309990,
+     "sf": 1956,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Young",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 319990,
+     "sf": 2005,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Donley",
+     "unit_type": "4 Bed / 2.5 Bath",
+     "base_price": 329990,
+     "sf": 2209,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Martin",
+     "unit_type": "4 Bed / 2.5 Bath",
+     "base_price": 334990,
+     "sf": 2341,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Howard",
+     "unit_type": "5 Bed / 3.5 Bath",
+     "base_price": 344990,
+     "sf": 2522,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Conroe, TX. LAT/LONG BLANK (city-level only)."
+  },
+  "133": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/dayton/river-ranch-trails/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/dayton/river-ranch-trails/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Angel Lagoon (40-acre w/ sand beaches), rec center, playground, trails, event lawn, pickleball, dog park",
+    "source": "newhomesmate.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$100/mo ($1,200/yr)",
+    "source": "newhomesmate.com",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Young",
+     "unit_type": "Single Family",
+     "base_price": 314990,
+     "sf": null,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Starr",
+     "unit_type": "Single Family",
+     "base_price": 294990,
+     "sf": 1709,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Upton",
+     "unit_type": "Single Family",
+     "base_price": 309990,
+     "sf": 2002,
+     "stories": null,
+     "garages": 3,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Martin",
+     "unit_type": "Single Family",
+     "base_price": 324990,
+     "sf": 2385,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Dayton, TX 77535. 'Trails Section 7' not separately confirmed. Beds/baths not captured per plan. Delivery NOT FOUND. LAT/LONG BLANK."
+  },
+  "140": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/cove/windcress/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/cove/windcress/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Resort-style pool, pickleball, putting green, tot lot, playground, scenic trails, recreation center",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$75/mo ($900/yr)",
+    "source": "texasally.com",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Rains",
+     "unit_type": "Single Family",
+     "base_price": 293990,
+     "sf": 1446,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Smith",
+     "unit_type": "Single Family",
+     "base_price": 308990,
+     "sf": 1596,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Starr",
+     "unit_type": "Single Family",
+     "base_price": 314990,
+     "sf": 1669,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Upton",
+     "unit_type": "Single Family",
+     "base_price": 340989,
+     "sf": 1956,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Donley",
+     "unit_type": "Single Family",
+     "base_price": 358990,
+     "sf": 2209,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Martin",
+     "unit_type": "Single Family",
+     "base_price": 365990,
+     "sf": 2341,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Howard",
+     "unit_type": "Single Family",
+     "base_price": 372990,
+     "sf": 2522,
+     "stories": null,
+     "garages": null,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Young",
+     "unit_type": "Single Family",
+     "base_price": 338989,
+     "sf": 2005,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Cove, TX 77523 (Mont Belvieu / Barbers Hill ISD). Delivery NOT FOUND. LAT/LONG BLANK."
+  },
+  "38": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/cedar-creek/double-eagle-ranch/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/cedar-creek/double-eagle-ranch/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Sold out (quick move-ins only)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Near McKinney Roughs Nature Park, Bastrop State Park, Lake Bastrop, Lost Pines Golf",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Lindale",
+     "unit_type": "Single Family",
+     "base_price": 633990,
+     "sf": 2480,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "1+ acre",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Hamilton",
+     "unit_type": "Single Family",
+     "base_price": 656990,
+     "sf": 2910,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "1+ acre",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Weston",
+     "unit_type": "Single Family",
+     "base_price": 714990,
+     "sf": 3622,
+     "stories": 2,
+     "garages": 3,
+     "lot_width": "1+ acre",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "DISCREPANCY: sheet says 50' Sec 5B / Manor, but the Coventry Double Eagle Ranch is in CEDAR CREEK on 1+ ACRE homesites and is SOLD OUT. Verify this is the same community. LAT/LONG BLANK."
+  },
+  "39": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/jarrell/eastern-wells/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/jarrell/eastern-wells/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Smart-home pkg, privacy-fenced backyards; I-35 access, Georgetown/Austin proximity",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$33/mo (Coventry section)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Ellis",
+     "unit_type": "Single Family",
+     "base_price": 339900,
+     "sf": null,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Howard",
+     "unit_type": "Single Family",
+     "base_price": 286900,
+     "sf": 2533,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Young",
+     "unit_type": "Single Family",
+     "base_price": 344900,
+     "sf": 2012,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Jarrell, TX (not Austin proper). 'Phase 3' and 50' lot width NOT confirmed. LAT/LONG BLANK."
+  },
+  "40": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/georgetown/parmer-ranch-50/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/georgetown/parmer-ranch-50/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Fitness center, pool, pickleball, basketball, 10-acre park, zip line, trails, pond",
+    "source": "parmerranch.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$50/mo",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Delta",
+     "unit_type": "Single Family",
+     "base_price": 562990,
+     "sf": 2825,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Hideaway",
+     "unit_type": "Single Family",
+     "base_price": 627990,
+     "sf": 2879,
+     "stories": 1,
+     "garages": null,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Georgetown, TX. 'Phases 9 & 10' NOT confirmed. LAT/LONG BLANK."
+  },
+  "43": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/tx/taylor/castlewood/",
+    "source": "https://dreamfindershomes.com/new-homes/tx/taylor/castlewood/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Clubhouse (fireplace, kitchen), 6+ acres parks",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$35/mo",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Hampton",
+     "unit_type": "Single Family",
+     "base_price": 289991,
+     "sf": 1482,
+     "stories": 1,
+     "garages": 1,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Jasper",
+     "unit_type": "Single Family",
+     "base_price": 331990,
+     "sf": 2309,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Taylor, TX. Built by Dream Finders (featured on Coventry site). 45' confirmed. LAT/LONG BLANK."
+  },
+  "45": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/tx/taylor/castlewood/",
+    "source": "https://dreamfindershomes.com/new-homes/tx/taylor/castlewood/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": null,
+   "hoa": {
+    "value": "$35/mo",
+    "source": "WebSearch",
+    "confidence": "low"
+   },
+   "floor_plans": [],
+   "notes": "Taylor, TX. Castlewood DUPLEX product not yet released (future phase, expected upper $200s). FLOOR PLANS BLANK - none published. LAT/LONG BLANK."
+  },
+  "44": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/georgetown/highland-village-45/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/georgetown/highland-village-45/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Playground, nature trails, sports courts, soccer field; Lake Georgetown access",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$75/mo",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Troy",
+     "unit_type": "Single Family",
+     "base_price": 390990,
+     "sf": 1992,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Izoro",
+     "unit_type": "Single Family",
+     "base_price": 370990,
+     "sf": 1762,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Georgetown, TX. 12 plans across 45'/50'/55'/60'; Troy & Izoro confirmed for 45'. LAT/LONG BLANK."
+  },
+  "98": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/heartland/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/heartland/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active (Apr-May 2026 deliveries cited)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "400+ acres parks, 35-acre lake w/ fishing pier, hike/bike trails, water park, 6 pools, Oasis amenity center",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$46/mo",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Hockley",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 324990,
+     "sf": 1896,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Kinney",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 314990,
+     "sf": 1723,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Kimble",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 399990,
+     "sf": 1650,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Polk",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 339900,
+     "sf": 2123,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wilson",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 349990,
+     "sf": 2277,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Tarrant",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 364990,
+     "sf": 2421,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Heartland, TX (Kaufman Co., ~25 mi E of Dallas; Crandall ISD). 2,100-acre master plan. LAT/LONG BLANK."
+  },
+  "99": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/anna/meadow-vista/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/anna/meadow-vista/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Trails, playgrounds, pool, clubhouse",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Kendalia",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 351990,
+     "sf": 1546,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Grandview",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 399990,
+     "sf": 2041,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wimberly",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 405990,
+     "sf": 2076,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Somerset",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 454990,
+     "sf": 2305,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Anna, TX (N. Dallas; Anna ISD). Delivery NOT FOUND. HOA for Coventry section NOT FOUND -> BLANK. LAT/LONG BLANK."
+  },
+  "207": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/schertz/rhine-valley/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/schertz/rhine-valley/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Rhine Valley Park, soccer fields, running trails, basketball courts",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$35/mo ($420/yr)",
+    "source": "tx-hoa.net",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Gaines",
+     "unit_type": "Single Family",
+     "base_price": 435445,
+     "sf": 2123,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wingate",
+     "unit_type": "Single Family",
+     "base_price": null,
+     "sf": null,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "low"
+    }
+   ],
+   "notes": "Schertz, TX (NE San Antonio) \u2014 note sheet implied New Braunfels. Lot widths not confirmed. LAT/LONG BLANK."
+  },
+  "208": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/san-antonio/garden-grove/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/san-antonio/garden-grove/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Planned amenity center w/ pool, pavilion",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$40/mo ($480/yr)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Hill",
+     "unit_type": "Single Family",
+     "base_price": 269990,
+     "sf": 1532,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "40'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Young",
+     "unit_type": "Single Family",
+     "base_price": null,
+     "sf": null,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "50'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "low"
+    }
+   ],
+   "notes": "San Antonio, TX. 40' and 50' sections. Range 1,433-2,522 SF, $255,990-$379,690. LAT/LONG BLANK."
+  },
+  "209": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/schertz/the-parklands/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/schertz/the-parklands/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Hiking/biking trails, pavilion, playgrounds, sport courts, community pool",
+    "source": "homes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$44/mo ($532/yr)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Somerset",
+     "unit_type": "Single Family",
+     "base_price": 419990,
+     "sf": 2358,
+     "stories": null,
+     "garages": 2,
+     "lot_width": "60'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Schertz, TX (near Santa Clara). 50' and 60' lots; only a 60' plan (Somerset) captured. Sheet says 50's \u2014 50' plan names NOT captured. LAT/LONG BLANK."
+  },
+  "210": {
+   "builder_brand": "Coventry Homes",
+   "website": {
+    "value": "https://www.coventryhomes.com/new-homes/tx/san-antonio/stillwater-ranch/",
+    "source": "https://www.coventryhomes.com/new-homes/tx/san-antonio/stillwater-ranch/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "6,000 SF resort pool w/ beach entry, kiddie pool, fitness room, basketball, tennis, playgrounds; nearby Government Canyon trails",
+    "source": "coventryhomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Woodlake",
+     "unit_type": "Single Family",
+     "base_price": 444990,
+     "sf": 2579,
+     "stories": 2,
+     "garages": null,
+     "lot_width": "45'",
+     "product": "Single Family",
+     "source": "coventryhomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "San Antonio, TX. Multi-builder. 45' and 60' lots; one 45' plan (Woodlake) captured. HOA conflicting ($60/mo vs $342 semi-annual) -> BLANK. LAT/LONG BLANK."
+  },
+  "93": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/co/windsor/trevenna/",
+    "source": "https://dreamfindershomes.com/new-homes/co/windsor/trevenna/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Parks, trails, lake access; recreation center nearby",
+    "source": "dreamfindershomes.com",
+    "confidence": "low"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Silverthorne",
+     "unit_type": "Single Family",
+     "base_price": 499990,
+     "sf": 1895,
+     "stories": 1,
+     "garages": 3,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Rainier",
+     "unit_type": "Single Family",
+     "base_price": 524990,
+     "sf": 2253,
+     "stories": 2,
+     "garages": 3,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Willow",
+     "unit_type": "Single Family",
+     "base_price": 564990,
+     "sf": 2448,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Antero",
+     "unit_type": "Single Family",
+     "base_price": 509990,
+     "sf": 2145,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Sierra",
+     "unit_type": "Single Family",
+     "base_price": 539990,
+     "sf": 2476,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Windsor, CO 80550. Front garages, all-electric, no basements. HOA/delivery NOT FOUND. LAT/LONG BLANK."
+  },
+  "94": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/co/bennett/muegge-farms/",
+    "source": "https://dreamfindershomes.com/new-homes/co/bennett/muegge-farms/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Pocket parks, community center, greenbelts",
+    "source": "dreamfindershomes.com",
+    "confidence": "low"
+   },
+   "hoa": {
+    "value": "~$100/mo ($1,200/yr)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Silverthorne",
+     "unit_type": "Single Family",
+     "base_price": 464990,
+     "sf": 1894,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Rainier",
+     "unit_type": "Single Family",
+     "base_price": 489990,
+     "sf": 2253,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Willow",
+     "unit_type": "Single Family",
+     "base_price": 509990,
+     "sf": 2448,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Antero",
+     "unit_type": "Single Family",
+     "base_price": 469990,
+     "sf": 2131,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Bennett, CO (Bennett SD). Multi-builder master plan. Delivery NOT FOUND. LAT/LONG BLANK."
+  },
+  "95": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/co/berthoud/farmstead/",
+    "source": "https://dreamfindershomes.com/new-homes/co/berthoud/farmstead/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Community pool, splash pad, trails, future elementary school; non-potable irrigation",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Alpine",
+     "unit_type": "Single Family",
+     "base_price": 509990,
+     "sf": 1700,
+     "stories": 1,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Silverthorne",
+     "unit_type": "Single Family",
+     "base_price": 524990,
+     "sf": 1895,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Antero",
+     "unit_type": "Single Family",
+     "base_price": 529990,
+     "sf": 2131,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Rainier",
+     "unit_type": "Single Family",
+     "base_price": 539990,
+     "sf": 2253,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Sierra",
+     "unit_type": "Single Family",
+     "base_price": 584990,
+     "sf": 2476,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Willow",
+     "unit_type": "Single Family",
+     "base_price": 584990,
+     "sf": 2448,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Denali",
+     "unit_type": "Single Family",
+     "base_price": 599990,
+     "sf": 2600,
+     "stories": 2,
+     "garages": 3,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Conifer",
+     "unit_type": "Single Family",
+     "base_price": 614990,
+     "sf": 2944,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Berthoud, CO 80513 (no metro district). 50' and 60' lots. Sheet says '50s'. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "96": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/co/broomfield/parkside-west-at-baseline/",
+    "source": "https://dreamfindershomes.com/new-homes/co/broomfield/parkside-west-at-baseline/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Neighborhood parks, gardenways, trails, amphitheater, pool, golf simulator",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$79/mo",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Beacon",
+     "unit_type": "Townhome",
+     "base_price": 584990,
+     "sf": 2002,
+     "stories": 4,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Overlook",
+     "unit_type": "Townhome",
+     "base_price": 513990,
+     "sf": 1667,
+     "stories": 3,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Broomfield, CO 80023 (Baseline master plan). Parkside West II & III \u2014 TOWNHOMES only. LAT/LONG BLANK."
+  },
+  "97": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/co/frederick/hidden-creek/",
+    "source": "https://dreamfindershomes.com/new-homes/co/frederick/hidden-creek/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "2 neighborhood parks, trails, playgrounds, open space",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$50/mo ($600/yr)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Silverthorne",
+     "unit_type": "Single Family",
+     "base_price": 516990,
+     "sf": 1894,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Newport",
+     "unit_type": "Single Family",
+     "base_price": 521990,
+     "sf": 1887,
+     "stories": 1,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Antero",
+     "unit_type": "Single Family",
+     "base_price": 536990,
+     "sf": 2145,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Rainier",
+     "unit_type": "Single Family",
+     "base_price": 546990,
+     "sf": 2253,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Sierra",
+     "unit_type": "Single Family",
+     "base_price": 566990,
+     "sf": 2476,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Conifer",
+     "unit_type": "Single Family",
+     "base_price": 606990,
+     "sf": 2944,
+     "stories": 2,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Frederick, CO 80530 ('Hidden Creek North'; LGI also builds a different Hidden Creek). Delivery NOT FOUND. LAT/LONG BLANK."
+  },
+  "198": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/az/san-tan-valley/bella-vista-farms/",
+    "source": "https://dreamfindershomes.com/new-homes/az/san-tan-valley/bella-vista-farms/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Pre-launch (sales expected 2025-26)",
+    "source": "WebSearch",
+    "confidence": "low"
+   },
+   "amenities": {
+    "value": "11-acre park, pool, splash pad, basketball, soccer field, shaded ramadas",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$95/mo",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [],
+   "notes": "San Tan Valley, AZ. DFH acquired 122 50' lots (Phase 4). Multi-builder master plan. DFH plan names/specs NOT FOUND (community 1,895-2,900 SF, from ~$341,990) -> FLOOR PLANS BLANK. LAT/LONG BLANK."
+  },
+  "200": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/az/maricopa/rancho-mirage/",
+    "source": "https://dreamfindershomes.com/new-homes/az/maricopa/rancho-mirage/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Selling (opened Mar 2025)",
+    "source": "phoenixagentmagazine.com",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Pickleball, playground, lake w/ fishing, basketball court",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "~$104/mo",
+    "source": "Jome",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Daffodil II",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 297990,
+     "sf": 1593,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Goldenrod II",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 329990,
+     "sf": 1705,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Passionflower II",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 334990,
+     "sf": 1968,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Maricopa, AZ. Range $297,990-$437,990. Water Lily II plan exists but specs NOT FOUND. LAT/LONG BLANK."
+  },
+  "201": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/az/san-tan-valley/skyline-village/",
+    "source": "https://dreamfindershomes.com/new-homes/az/san-tan-valley/skyline-village/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "WebSearch",
+    "confidence": "low"
+   },
+   "amenities": {
+    "value": "Planned: park, clubhouse, gym, pool, trails, dog park, tennis, pickleball, bocce, volleyball, basketball (community center opens 2026)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "San Tan Valley, AZ. DFH has 129 lots in 300-acre Skyline Village. From ~$380,000. DFH plan names/specs NOT FOUND -> FLOOR PLANS BLANK. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "202": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/az/buckeye/apache-farms/",
+    "source": "https://dreamfindershomes.com/new-homes/az/buckeye/apache-farms/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Selling (Grand Opening Feb 2026)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Parks, walking trails, half-court basketball, playgrounds, open spaces",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Alamo",
+     "unit_type": "3 Bed / 2 Bath",
+     "base_price": 364990,
+     "sf": 1556,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Corona",
+     "unit_type": "Single Family",
+     "base_price": 379990,
+     "sf": 1750,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Havasu",
+     "unit_type": "4 Bed / 2 Bath",
+     "base_price": 400990,
+     "sf": 1958,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Horizon",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 409990,
+     "sf": 2179,
+     "stories": null,
+     "garages": 3,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Pleasant",
+     "unit_type": "4 Bed / 3 Bath",
+     "base_price": 430990,
+     "sf": 2378,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Buckeye, AZ (85 homesites). Range $364,990-$489,845. Helios plan exists but specs NOT FOUND. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "174": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/nc/calabash/calabash-palms/",
+    "source": "https://dreamfindershomes.com/new-homes/nc/calabash/calabash-palms/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "2 scenic ponds, dog park; maintenance-free",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$180/mo (incl. lawn/grounds)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Cameron",
+     "unit_type": "Townhome",
+     "base_price": 240000,
+     "sf": 1704,
+     "stories": 2,
+     "garages": 1,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Filmore",
+     "unit_type": "Townhome",
+     "base_price": 246990,
+     "sf": 1736,
+     "stories": 2,
+     "garages": 1,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Calabash, NC. Maintenance-free townhomes (3-4 bed), $227K-$264K. LAT/LONG BLANK."
+  },
+  "175": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/nc/ocean-isle/villas-at-seaside/",
+    "source": "https://dreamfindershomes.com/new-homes/nc/ocean-isle/villas-at-seaside/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Sold out (new phase coming)",
+    "source": "WebSearch",
+    "confidence": "low"
+   },
+   "amenities": {
+    "value": "4 mi to beach; 10+ golf courses within 10 min; lawn care & exterior insurance incl.",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Wylie",
+     "unit_type": "Townhome",
+     "base_price": 282000,
+     "sf": 1566,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Glenville",
+     "unit_type": "Townhome",
+     "base_price": 288000,
+     "sf": 1731,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Wisteria",
+     "unit_type": "Townhome",
+     "base_price": 309990,
+     "sf": 1969,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Ivy",
+     "unit_type": "Villa",
+     "base_price": null,
+     "sf": 1604,
+     "stories": 1,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Villa",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Ocean Isle Beach, NC. Townhomes & villas. Sold out as of Jun 2026. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "176": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/tn/smyrna/briley-downs/",
+    "source": "https://dreamfindershomes.com/new-homes/tn/smyrna/briley-downs/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active (10+ move-in ready)",
+    "source": "WebSearch",
+    "confidence": "medium"
+   },
+   "amenities": {
+    "value": "Resort-style pool, playground, dog park, walking trails",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": {
+    "value": "$90/mo",
+    "source": "nashvillehome.guru",
+    "confidence": "medium"
+   },
+   "floor_plans": [
+    {
+     "plan": "Aspen",
+     "unit_type": "Single Family",
+     "base_price": 452990,
+     "sf": 1713,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Hadley",
+     "unit_type": "Single Family",
+     "base_price": 443990,
+     "sf": 2003,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Beaufain",
+     "unit_type": "Single Family",
+     "base_price": 462990,
+     "sf": 2310,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Windermere",
+     "unit_type": "Single Family",
+     "base_price": 477990,
+     "sf": 2459,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Tellico",
+     "unit_type": "Single Family",
+     "base_price": 532990,
+     "sf": 2793,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Bellwood",
+     "unit_type": "Single Family",
+     "base_price": 509990,
+     "sf": 2494,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Ironwood",
+     "unit_type": "Single Family",
+     "base_price": 518990,
+     "sf": 2919,
+     "stories": null,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Smyrna, TN (not Nashville proper). 3-5 bed, $444K-$615K. Sheet says '45''. LAT/LONG BLANK."
+  },
+  "177": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/tn/white-bluff/maple-crest/",
+    "source": "https://dreamfindershomes.com/new-homes/tn/white-bluff/maple-crest/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Coming soon",
+    "source": "Zillow",
+    "confidence": "low"
+   },
+   "amenities": {
+    "value": "Playground, open green spaces; near Montgomery Bell State Park",
+    "source": "Zillow",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "White Bluff, TN. From ~$299,900 (low $300s), 2-4 bed. Plan names NOT FOUND -> FLOOR PLANS BLANK. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "33": {
+   "builder_brand": "Dream Finders Homes",
+   "website": null,
+   "delivery": null,
+   "amenities": null,
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "NOT FOUND \u2014 no DFH 'Village Towns' community confirmable in the Atlanta division (note: a 'Villages at Harris Creek', West Point GA, is separate and already in the sheet). Needs internal/sales confirmation. ALL FIELDS BLANK."
+  },
+  "46": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/md/waldorf/spring-haven/",
+    "source": "https://dreamfindershomes.com/new-homes/md/waldorf/spring-haven/",
+    "confidence": "medium"
+   },
+   "delivery": null,
+   "amenities": {
+    "value": "Parks, tot lots, walking paths, green spaces",
+    "source": "dreamfindershomes.com",
+    "confidence": "medium"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Norbury",
+     "unit_type": "Townhome",
+     "base_price": 414990,
+     "sf": null,
+     "stories": 3,
+     "garages": 1,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Brexton",
+     "unit_type": "Townhome",
+     "base_price": 429990,
+     "sf": 2095,
+     "stories": 3,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Townhome",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Dalton",
+     "unit_type": "Single Family",
+     "base_price": 609990,
+     "sf": 3053,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Oakley",
+     "unit_type": "Single Family",
+     "base_price": 644990,
+     "sf": 3638,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Stirling",
+     "unit_type": "Single Family",
+     "base_price": 689990,
+     "sf": 3839,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Capital division = Waldorf, MD (Charles Co., metro DC). TH ($415K-$430K) + SFD ($610K-$690K). HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "60": {
+   "builder_brand": "Dream Finders Homes",
+   "website": {
+    "value": "https://dreamfindershomes.com/new-homes/nc/matthews/arbor-village/",
+    "source": "https://dreamfindershomes.com/new-homes/nc/matthews/arbor-village/",
+    "confidence": "medium"
+   },
+   "delivery": {
+    "value": "Active (final opportunities)",
+    "source": "Redfin",
+    "confidence": "low"
+   },
+   "amenities": {
+    "value": "Studio-above-garage option on select homesites",
+    "source": "dreamfindershomes.com",
+    "confidence": "low"
+   },
+   "hoa": null,
+   "floor_plans": [
+    {
+     "plan": "Red Oak",
+     "unit_type": "Single Family",
+     "base_price": 447900,
+     "sf": 1781,
+     "stories": 2,
+     "garages": 2,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    },
+    {
+     "plan": "Amberlea",
+     "unit_type": "Single Family",
+     "base_price": 514900,
+     "sf": 2415,
+     "stories": null,
+     "garages": null,
+     "lot_width": null,
+     "product": "Single Family",
+     "source": "dreamfindershomes.com",
+     "confidence": "medium"
+    }
+   ],
+   "notes": "Charlotte division = Matthews, NC 28105. Range $447,900-$524,900; final opportunities. HOA NOT FOUND. LAT/LONG BLANK."
+  },
+  "113": {
+   "builder_brand": "Dream Finders Homes",
+   "website": null,
+   "delivery": null,
+   "amenities": null,
+   "hoa": null,
+   "floor_plans": [],
+   "notes": "NOT FOUND \u2014 no DFH 'East River' community confirmable in the Greenville SC division. DFH does build in Greenville/Spartanburg/Anderson, but this name wasn't found. Needs internal/sales confirmation. ALL FIELDS BLANK."
+  }
+ }
 }

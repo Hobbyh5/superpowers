@@ -85,7 +85,12 @@ This emits a clean, un-merged workbook with four sheets:
 - **Verification Report** — results of the verify pass
 - **Needs Research** — every still-incomplete community and *why* (the flag report)
 
-Enriched rows are tinted green; flagged rows orange.
+Enriched rows are tinted green; flagged rows orange. The Spec List carries an Excel
+**autofilter** on every column (Division, Property Name, Product Type, Lot Width,
+Stories, Garages, Floor Plan, …) and **separator borders**: a thin blue line
+between properties and a thick blue line between divisions (computed by comparing
+each community's division to the previous one — division is repeated on every block
+in the flat layout, so a plain "non-empty" test would mark every row).
 
 ## Environment caveat: builder sites are often bot-blocked
 
