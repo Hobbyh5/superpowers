@@ -7,6 +7,10 @@ node_modules/
 inspo
 triage/
 
+# Packaging artifact: the skill is delivered as a zip of already-tracked files
+# under skills/, so the generated archive itself is not committed.
+verifying-spec-spreadsheets-skill.zip
+
 # Eval harness lives in its own repository, cloned into evals/ for local
 # development (see CLAUDE.md / README.md). It is not part of the published
 # plugin, so the whole directory is ignored here.
