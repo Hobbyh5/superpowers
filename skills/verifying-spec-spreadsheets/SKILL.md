@@ -68,6 +68,18 @@ For each community gather, **each with its own source URL**: official community
 page, community-precise lat/long, floor plans (name, beds/baths, SF, price,
 stories, garages, lot width, product type), amenities, HOA, delivery status.
 
+**Pull plan data from the right place.** The builder community page has a
+**"FLOOR PLANS — AVAILABLE IN <community>"** card row — plan name, *From $price*,
+beds/baths, SF. That is the authoritative pricing/spec source; target it in
+searches ("Available in <community> From $… beds baths sqft") and prefer it over
+aggregators. The *From $* figure is the Base Retail Price.
+
+**Keep Product Type and Unit Type separate.** Unit Type holds only beds/baths
+(e.g. "4-5 Bed / 3 Bath"); Product Type holds Single Family / Townhome / Paired /
+Duplex / Villa. Never put a product type in the bed/bath slot — `build_output.py`
+auto-corrects this (moves stray product words out of Unit Type), but record them
+in the right field to begin with.
+
 Run independent communities as **parallel research subagents** — each one is
 self-contained. Give every subagent the no-fabrication rule and the brand-alias
 context explicitly.

@@ -91,6 +91,27 @@ def _v(field):
     return field
 
 
+PRODUCT_KEYWORDS = {
+    "single family", "single-family", "townhome", "town home", "paired",
+    "duplex", "villa", "condo", "row", "sfd", "th",
+}
+
+
+def normalize_floorplan(fp):
+    """Keep Unit Type strictly bed/bath; move any product-type text to Product.
+
+    Some sources put "Single Family"/"Townhome" in the bed/bath slot. If the
+    unit_type isn't a real bed/bath string (no "bed"), treat it as a product type.
+    """
+    ut = (fp.unit_type or "").strip()
+    if ut and "bed" not in ut.lower():
+        if ut.lower() in PRODUCT_KEYWORDS or "/" not in ut:
+            if not fp.product:
+                fp.product = ut
+            fp.unit_type = None
+    return fp
+
+
 def apply_enrichment(communities, payload):
     enr = {int(k): v for k, v in payload.get("enrichments", {}).items()}
     for c in communities:
@@ -139,6 +160,8 @@ def build(src_path, out_path, payload):
     first_block = True
     for c in communities:
         rows = c.floor_plans if c.floor_plans else [FloorPlan()]
+        for fp in rows:
+            normalize_floorplan(fp)
         for i, fp in enumerate(rows):
             if i == 0 and not first_block:
                 start_row = ws.max_row + 1
@@ -164,6 +187,10 @@ def build(src_path, out_path, payload):
             ]
             ws.append(row)
             r = ws.max_row
+            # Show Base Retail Price as currency ($363,990) while keeping it numeric.
+            price_cell = ws.cell(row=r, column=7)
+            if isinstance(price_cell.value, (int, float)):
+                price_cell.number_format = '"$"#,##0'
             if c.status == "enriched" and (fp.source or fp.confidence):
                 for cc in range(1, len(FLAT_HEADERS) + 1):
                     ws.cell(row=r, column=cc).fill = ENRICHED_FILL

@@ -26,6 +26,15 @@ Community to research: **{{PROPERTY_NAME}}**, {{DIVISION}} division ({{CITY_HINT
 Note any lot-width / section qualifier in the name (e.g. "45' - Section 23") and
 try to confirm whether the plans you find belong to that specific subset.
 
+WHERE THE GOOD DATA LIVES: on the builder's community page there is a section
+titled **"FLOOR PLANS — AVAILABLE IN <COMMUNITY>"** — a row of plan cards. Each
+card is the most accurate source and gives exactly what we need: the **plan name**,
+**"From $<price>"** (use this as the Base Retail Price), the **beds / baths**
+(icons, e.g. "4-5 / 3"), and the **square footage**. Prefer these cards over
+aggregators/MLS. In search snippets, hunt for this "Available in <community> …
+From $… beds baths sqft" pattern. If a card shows a bed/bath *range* (e.g.
+"4-5 Bed / 3 Bath"), record it verbatim in unit_type.
+
 Return a structured report:
 - BUILDER_BRAND: + why
 - COMMUNITY_URL: url or "NOT FOUND"
