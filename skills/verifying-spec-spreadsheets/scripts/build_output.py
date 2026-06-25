@@ -74,6 +74,7 @@ BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 # Separators on the flat Spec List: thin blue between properties, thick blue between divisions.
 PROP_BLUE = Side(style="thin", color="2E75B6")
 DIV_BLUE = Side(style="thick", color="1F4E78")
+COL_SEP = Side(style="thin", color="BDD7EE")   # light blue vertical gridline between columns
 
 
 def _style_header(ws, ncols):
@@ -207,6 +208,14 @@ def build(src_path, out_path, payload):
     # Excel autofilter (dropdowns on every column, incl. Division, Property Name,
     # Product Type, Lot Width, Stories, Garages, Floor Plan).
     ws.auto_filter.ref = f"A1:{openpyxl.utils.get_column_letter(len(FLAT_HEADERS))}{ws.max_row}"
+
+    # Vertical gridlines between every column (header + data), preserving any
+    # top/bottom borders set elsewhere.
+    for r in range(1, ws.max_row + 1):
+        for cc in range(1, len(FLAT_HEADERS) + 1):
+            cell = ws.cell(row=r, column=cc)
+            b = cell.border
+            cell.border = Border(left=COL_SEP, right=COL_SEP, top=b.top, bottom=b.bottom)
 
     # Separator borders: thin blue between properties, thick blue between divisions.
     # Applied as a top border across the row that begins each new block.
