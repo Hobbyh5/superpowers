@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "builder": "Dream Finders Homes (DFH)",
+    "research_date": "2026-06-25",
+    "constraint": "dreamfindershomes.com and coventryhomes.com are blocked by this environment's egress policy (403 on CONNECT). Data below is from WebSearch result snippets quoting those sites plus accessible third-party sources (news, MLS/aggregators). Confidence is therefore capped at 'medium'. Community-precise lat/long could not be confirmed for any blank community (only city-level), so per policy it is LEFT BLANK and flagged.",
+    "brand_aliases": {
+      "Austin": "Coventry Homes",
+      "Houston": "Coventry Homes",
+      "Dallas": "Coventry Homes",
+      "San Antonio": "Coventry Homes"
+    }
+  },
+  "verifications": {
+    "5": {
+      "website_ok": "blocked (URL well-formed; policy 403 on fetch)",
+      "latlong_plausible": "yes (~1.7 mi S of Temple, GA center 33.74,-85.03)",
+      "plans_checked": "unconfirmed (live page fetch blocked by egress policy)",
+      "discrepancies": "None detectable; could not fetch live page to compare plans/prices.",
+      "source": "https://dreamfindershomes.com/new-homes/ga/temple/azalea-hills/"
+    },
+    "69": {
+      "website_ok": "blocked (page exists per search index; policy 403 on fetch)",
+      "latlong_plausible": "yes (~1.5 mi S of Westminster, CO center 39.84,-105.04)",
+      "plans_checked": "partial — Arbor 1806SF, Berkeley 2142SF, Vrain 2338SF consistent with sheet; Crescent and the Paired plans not surfaced; prices unconfirmed",
+      "discrepancies": "Search surfaced townhome plans 'Terrain 1406SF' and 'Foothills 1507SF' not present in the sheet; the sheet's generic 'Townhomes 1535+' row may be stale. Prices could not be revalidated (fetch blocked).",
+      "source": "https://dreamfindershomes.com/new-homes/co/westminster/uplands/"
+    }
+  },
+  "enrichments": {
+    "34": {
+      "builder_brand": "Dream Finders Homes",
+      "website": {"value": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/", "source": "DFH community + Aspen subpage; LaGrange News ribbon-cutting", "confidence": "medium"},
+      "delivery": {"value": "Active", "source": "DFH listings show move-in-ready homes", "confidence": "medium"},
+      "amenities": {"value": "Playground, community pavilion", "source": "LaGrange News; thecobbgroup", "confidence": "medium"},
+      "hoa": {"value": "$600 initiation; ~$1,200/yr ($100/mo)", "source": "thecobbgroup.com", "confidence": "medium"},
+      "floor_plans": [
+        {"plan": "Aspen", "unit_type": "3 Bed / 2.5 Bath", "base_price": 249990, "sf": 1579, "stories": 2, "garages": 2, "lot_width": null, "product": "Townhome", "source": "https://dreamfindershomes.com/new-homes/ga/hogansville/moss-creek/aspen/", "confidence": "medium"}
+      ],
+      "notes": "DFH community in Hogansville, GA (Troup Co.). Only one plan (Aspen) offered; 136-townhome community. LAT/LONG LEFT BLANK — only city-level 33.1732,-84.9149 (Hogansville) found, not community-precise. Lot width not published."
+    },
+    "129": {
+      "builder_brand": "Coventry Homes (DFH Texas brand)",
+      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/hockley/cypress-green/", "source": "Coventry community page (via search snippets)", "confidence": "medium"},
+      "delivery": {"value": "Active", "source": "Quick move-in homes listed 2025-2026", "confidence": "medium"},
+      "amenities": {"value": "Pool, splash pad, fitness center, playgrounds, parks, trails, sport courts, clubhouse", "source": "cypressgreentx.com; HAR listings", "confidence": "medium"},
+      "hoa": {"value": "~$83/mo (~$996/yr)", "source": "HAR.com / community listings", "confidence": "medium"},
+      "floor_plans": [
+        {"plan": "Hill", "unit_type": "3 Bed / 2 Bath", "base_price": 299990, "sf": 1568, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/hill/", "confidence": "medium"},
+        {"plan": "Wise", "unit_type": "3 Bed / 2 Bath", "base_price": 318990, "sf": 1626, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/wise/", "confidence": "medium"},
+        {"plan": "Moore", "unit_type": "4 Bed / 3.5 Bath", "base_price": 329990, "sf": 2246, "stories": 1, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/moore/", "confidence": "medium"},
+        {"plan": "Reeves", "unit_type": "5 Bed / 2.5 Bath", "base_price": 352990, "sf": 2526, "stories": 2, "garages": 2, "lot_width": null, "product": "Single Family", "source": "coventryhomes.com/.../cypress-green/reeves/", "confidence": "medium"}
+      ],
+      "notes": "DFH builds as Coventry Homes in Houston. Plans (Hill/Wise/Moore/Reeves) are the Coventry Cypress Green lineup; the sheet's '45' / Section 23' lot-width & section filter could NOT be confirmed in public sources — these may include non-45' plans. Verify exact 45'/Sec.23 subset with sales office. LAT/LONG LEFT BLANK — only Hockley city-level 30.0228,-95.8400 found."
+    },
+    "41": {
+      "builder_brand": "Coventry Homes (DFH Texas brand)",
+      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-45/", "source": "Coventry Briarwood 45' page (via search snippets)", "confidence": "medium"},
+      "delivery": {"value": "Active", "source": "Homes available for sale", "confidence": "medium"},
+      "amenities": {"value": "Community pool(s), walking trails, parks, greenbelts, pond (205-acre master plan)", "source": "briarwoodatx.com; newhomesource", "confidence": "medium"},
+      "floor_plans": [
+        {"plan": "Potter", "unit_type": "3 Bed / 2 Bath", "base_price": 289990, "sf": 1372, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Wise", "unit_type": "3 Bed / 2 Bath", "base_price": 302990, "sf": 1582, "stories": 1, "garages": 2, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Cooke", "unit_type": "4 Bed / 2 Bath", "base_price": 308990, "sf": 1694, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Gregg", "unit_type": "3 Bed / 2.5 Bath", "base_price": 317990, "sf": 1899, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Llana", "unit_type": "4 Bed / 2.5 Bath", "base_price": 324990, "sf": 2073, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Ellis", "unit_type": "4 Bed / 3 Bath", "base_price": 315990, "sf": 1849, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Moore", "unit_type": "4 Bed / 3.5 Bath", "base_price": 331990, "sf": 2224, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"},
+        {"plan": "Reeves", "unit_type": "5 Bed / 2.5 Bath", "base_price": 356990, "sf": 2488, "stories": 2, "garages": 2, "lot_width": "45'", "product": "Single Family", "source": "Coventry/DFH Briarwood 45 (search snippet)", "confidence": "medium"}
+      ],
+      "notes": "DFH builds as Coventry Homes in Austin; community is in Elgin, TX (Bastrop Co.). STORIES/GARAGES LEFT BLANK on most plans — research surfaced them only as inferred, not confirmed. HOA LEFT BLANK — sources conflicted ($1,150/yr on one HOA site vs 'no HOA' elsewhere). LAT/LONG LEFT BLANK — only Elgin city-level 30.3497,-97.3703 found."
+    },
+    "42": {
+      "builder_brand": "Coventry Homes (DFH Texas brand)",
+      "website": {"value": "https://www.coventryhomes.com/new-homes/tx/elgin/briarwood-50/", "source": "Coventry Briarwood 50' page (via search snippets)", "confidence": "medium"},
+      "delivery": {"value": "Active", "source": "Homes available for sale", "confidence": "medium"},
+      "notes": "DFH/Coventry, Elgin TX. WEBSITE confirmed but FLOOR PLANS LEFT BLANK — the 50' lineup is ~6 plans, 1,669-2,521 SF, 4-5 bed, $284,900-$322,990 per search ranges, but individual plan NAMES/specs were NOT found publicly. Needs sales-office confirmation. LAT/LONG LEFT BLANK (Elgin city-level only)."
+    },
+    "199": {
+      "builder_brand": "Dream Finders Homes",
+      "website": {"value": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/", "source": "DFH community page; bdmag/Phoenix Agent launch coverage", "confidence": "medium"},
+      "delivery": {"value": "Upcoming (Spring 2026 sales launch)", "source": "bdmag.com; phoenixagentmagazine", "confidence": "medium"},
+      "amenities": {"value": "Pool, splash pad, multiple playgrounds, sport courts (basketball/volleyball/pickleball), dog parks, walking trails, 3 community parks", "source": "northcoppercanyon.com", "confidence": "medium"},
+      "hoa": {"value": "$62/mo", "source": "dgpaz.com community listing", "confidence": "medium"},
+      "floor_plans": [
+        {"plan": "Alamo", "unit_type": "3 Bed / 2 Bath", "base_price": null, "sf": null, "stories": null, "garages": null, "lot_width": "45'", "product": "Single Family", "source": "https://dreamfindershomes.com/new-homes/az/surprise/north-copper-canyon/alamo/", "confidence": "low"}
+      ],
+      "notes": "DFH's Surprise, AZ community (Phoenix division), 45'x120' homesites, 125 DFH homesites planned. PRE-LAUNCH (spring 2026): only the 'Alamo' plan is announced and its SF/PRICE/STORIES/GARAGES are NOT yet published — LEFT BLANK. LAT/LONG LEFT BLANK — only Surprise city-level ~33.66,-112.37 found."
+    }
+  }
+}
