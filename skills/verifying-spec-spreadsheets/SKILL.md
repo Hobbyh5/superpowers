@@ -84,6 +84,29 @@ Run independent communities as **parallel research subagents** — each one is
 self-contained. Give every subagent the no-fabrication rule and the brand-alias
 context explicitly.
 
+### 3b. Geocode the communities (fills Lat/Long automatically)
+Instead of hand-copying coordinates, let `scripts/geocode.py` resolve them. It is
+zero-dependency and needs **no API key**: it tries the **US Census Geocoder**
+(rooftop precision for US street addresses) and falls back to **OpenStreetMap /
+Nominatim** for place/POI/city queries.
+
+Build a `geocode_queries.json` of `{src_row: query}` — a sales-office / model-home
+**street address** geocodes to community-precise coordinates; `"Community, City, ST"`
+is an acceptable fallback. Then:
+```
+python scripts/geocode.py --queries geocode_queries.json --patch-payload payload.json
+```
+Confidence is honest about precision: **high** = street/building, **medium** =
+neighbourhood/POI, **low** = city/zip centroid. Per the leave-blank rule, only
+high/medium are written into Lat/Long; **low (city-level) is skipped and stays
+flagged** unless you pass `--allow-city`. `python scripts/geocode.py --selftest`
+verifies the parsing/policy offline.
+
+> Egress note: some locked-down environments block the geocoding hosts
+> (`geocoding.geo.census.gov`, `nominatim.openstreetmap.org`) at the policy layer,
+> just like the builder sites — geocode.py then reports `NO MATCH (... 403)` and
+> writes nothing. Run it where outbound HTTPS is allowed.
+
 ### 4. Record findings as a payload, then rebuild
 Write a `payload.json` (shape documented at the top of `scripts/build_output.py`)
 with `verifications` and `enrichments`. Only put sourced, confident values in;
@@ -122,7 +145,7 @@ at the **egress-policy** layer (403 on CONNECT). When that happens:
 
 | You're about to... | Instead |
 |---|---|
-| Write a lat/long that's really the city center | Leave blank; note the city coord for a human |
+| Write a lat/long that's really the city center | Leave blank; geocode a street address instead (geocode.py won't write low-confidence city centroids) |
 | Fill stories/garages "because they're usually 2" | Leave blank; flag |
 | Pick one of two conflicting HOA numbers | Leave blank; note both in flags |
 | Write Coventry plans into a "45' / Section 23" row without confirming the subset | Write plans, but flag that the lot-width/section filter is unconfirmed |
@@ -132,5 +155,7 @@ at the **egress-policy** layer (403 on CONNECT). When that happens:
 ## Files
 - `scripts/spec_model.py` — parser + blank detector (openpyxl only, zero extra deps)
 - `scripts/build_output.py` — rebuilds the auditable 4-sheet output from a payload
+- `scripts/geocode.py` — no-key geocoder (US Census → Nominatim) with confidence tiers
 - `scripts/brand_aliases.json` — division → builder-brand map (extend as needed)
 - `references/research-subagent-prompt.md` — copy-paste prompt for a per-community researcher
+- `references/geocode_queries.json` — seed `{src_row: address}` for geocode.py
