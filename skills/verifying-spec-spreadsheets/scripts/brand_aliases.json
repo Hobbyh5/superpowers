@@ -1,0 +1,13 @@
+{
+  "_comment": "Division -> homebuilder brand to search FIRST when researching a community. Dream Finders Homes (DFH) builds under regional brands in some markets. Extend as you confirm more aliases.",
+  "default": {
+    "brand": "Dream Finders Homes",
+    "site": "dreamfindershomes.com"
+  },
+  "by_division": {
+    "Austin":      {"brand": "Coventry Homes", "site": "coventryhomes.com", "also": ["MainVue", "Megatel"]},
+    "Houston":     {"brand": "Coventry Homes", "site": "coventryhomes.com", "also": ["MainVue", "Megatel"]},
+    "Dallas":      {"brand": "Coventry Homes", "site": "coventryhomes.com", "also": ["MainVue", "Megatel"]},
+    "San Antonio": {"brand": "Coventry Homes", "site": "coventryhomes.com", "also": ["MainVue", "Megatel"]}
+  }
+}
