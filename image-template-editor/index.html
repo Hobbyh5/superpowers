@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Template Studio — reusable image template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --paper:#F2F3F6; --panel:#FFFFFF; --panel-2:#E9EBF1; --ink:#1C2130; --ink-2:#5A6175;
+    --line:#D6DAE3; --accent:#3557D4; --accent-ink:#FFFFFF; --ok:#2E7D4F; --warn:#A9541C;
+    --stage:#DFE2EA; --checker-a:#CFD3DD; --checker-b:#C2C7D3; --shadow:0 10px 30px rgba(28,33,48,.14);
+    --mono:"SF Mono","Cascadia Code","JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    --ui:"Avenir Next","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#161A24; --panel:#1E2330; --panel-2:#262C3C; --ink:#EAECF3; --ink-2:#9AA1B5;
+      --line:#333A4C; --accent:#6E8BFF; --accent-ink:#10142B; --ok:#5BBF8A; --warn:#E0925B;
+      --stage:#101420; --checker-a:#252B3A; --checker-b:#1B2130; --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#F2F3F6; --panel:#FFFFFF; --panel-2:#E9EBF1; --ink:#1C2130; --ink-2:#5A6175;
+    --line:#D6DAE3; --accent:#3557D4; --accent-ink:#FFFFFF; --ok:#2E7D4F; --warn:#A9541C;
+    --stage:#DFE2EA; --checker-a:#CFD3DD; --checker-b:#C2C7D3; --shadow:0 10px 30px rgba(28,33,48,.14);
+  }
+  :root[data-theme="dark"]{
+    --paper:#161A24; --panel:#1E2330; --panel-2:#262C3C; --ink:#EAECF3; --ink-2:#9AA1B5;
+    --line:#333A4C; --accent:#6E8BFF; --accent-ink:#10142B; --ok:#5BBF8A; --warn:#E0925B;
+    --stage:#101420; --checker-a:#252B3A; --checker-b:#1B2130; --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:var(--ui);color:var(--ink);background:var(--paper);display:flex;flex-direction:column;overflow:hidden}
+
+  /* ── Top bar ─────────────────────────────────────── */
+  header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex:none}
+  .wordmark{display:flex;align-items:baseline;gap:8px;user-select:none}
+  .wordmark b{font-weight:700;letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+  .wordmark span{font-size:12px;color:var(--ink-2)}
+  .reg{width:14px;height:14px;flex:none;align-self:center}
+  #status{margin-left:auto;font-size:12px;color:var(--ink-2);white-space:nowrap}
+  #status.ok{color:var(--ok)}
+  button, select, input[type="text"], input[type="number"]{font-family:var(--ui);font-size:13px;color:var(--ink)}
+  button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 12px}
+  button:hover{border-color:var(--accent)}
+  button:focus-visible, input:focus-visible, select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+  button.quiet{border-color:transparent;background:transparent;color:var(--ink-2);padding:4px 8px}
+  button.quiet:hover{color:var(--ink)}
+
+  /* ── Layout ──────────────────────────────────────── */
+  main{flex:1;display:flex;min-height:0}
+  #stageWrap{flex:1;min-width:0;position:relative;background:var(--stage);display:flex;flex-direction:column}
+  #stage{flex:1;overflow:auto;display:grid;place-items:center;padding:28px}
+  #canvasBox{position:relative;flex:none;box-shadow:var(--shadow);
+    background:repeating-conic-gradient(var(--checker-a) 0% 25%, var(--checker-b) 0% 50%) 0 0/24px 24px}
+  #canvasBox canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
+  #canvasBox canvas:first-child{position:static}
+  #ov{touch-action:none;cursor:default}
+
+  #zoombar{position:absolute;left:14px;bottom:14px;display:flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;box-shadow:var(--shadow)}
+  #zoombar input[type=range]{width:110px}
+  #zoomPct{font-family:var(--mono);font-size:11px;min-width:38px;text-align:right}
+
+  #hint{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;padding:24px}
+  #hint>div{pointer-events:auto;max-width:400px;background:var(--panel);border:1px dashed var(--line);border-radius:10px;padding:20px 22px;box-shadow:var(--shadow)}
+  #hint h2{margin:0 0 10px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+  #hint ol{margin:0;padding-left:20px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+  #hint li b{color:var(--ink)}
+  #hint p{font-size:12px;color:var(--ink-2);margin:10px 0 0}
+
+  /* ── Inspector ───────────────────────────────────── */
+  #panel{width:330px;flex:none;overflow-y:auto;background:var(--panel);border-left:1px solid var(--line);padding-bottom:30px}
+  section{border-bottom:1px solid var(--line);padding:14px 16px}
+  section h3{margin:0 0 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+  section h3 .n{font-family:var(--mono);font-size:10px;border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--ink-2)}
+  .row{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .row label{font-size:12px;color:var(--ink-2)}
+  .grow{flex:1}
+  .dim{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+  input[type=text]{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+  input[type=number]{width:64px;padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+  select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper);max-width:100%}
+  input[type=color]{width:34px;height:28px;padding:2px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+  input[type=range]{accent-color:var(--accent)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .seg button{border:0;border-radius:0;padding:5px 10px;background:transparent;font-size:12px}
+  .seg button.on{background:var(--accent);color:var(--accent-ink)}
+  .seg button:focus-visible{outline-offset:-2px}
+  .check{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);cursor:pointer;user-select:none}
+  .check input{accent-color:var(--accent)}
+
+  #textList{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+  .trow{display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--line);border-radius:7px;cursor:pointer;background:var(--paper)}
+  .trow.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .trow:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .trow .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);min-width:52px}
+  .trow .val{font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+  .trow .del{border:0;background:none;color:var(--ink-2);font-size:14px;padding:0 2px;line-height:1}
+  .trow .del:hover{color:var(--warn)}
+
+  #textEditor{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--panel-2)}
+  #textEditor[hidden]{display:none}
+
+  #toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--paper);
+    font-size:13px;padding:9px 16px;border-radius:8px;transition:transform .25s;z-index:9;max-width:90vw}
+  #toast.show{transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion: reduce){ #toast{transition:none} }
+
+  @media (max-width: 760px){
+    body{overflow:auto}
+    .wordmark span{display:none}
+    main{flex-direction:column}
+    #stageWrap{min-height:56vh}
+    #panel{width:100%;border-left:0;border-top:1px solid var(--line)}
+  }
+</style>
+
+<header>
+  <svg class="reg" viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="5.6" fill="none" stroke="var(--accent)" stroke-width="1.4"/><path d="M7 0v14M0 7h14" stroke="var(--accent)" stroke-width="1.2"/></svg>
+  <div class="wordmark"><b>Template Studio</b><span>photo + name + district, on repeat</span></div>
+  <div id="status">No layout saved yet</div>
+  <button id="btnPack" title="Download a portable file containing the template, fonts and layout">Export pack</button>
+  <button id="btnImportPack" title="Load a previously exported pack file">Import pack</button>
+  <button class="primary" id="btnDownload">Download PNG</button>
+</header>
+
+<main>
+  <div id="stageWrap">
+    <div id="stage">
+      <div id="canvasBox">
+        <canvas id="cv" width="1080" height="1350"></canvas>
+        <canvas id="ov" width="1080" height="1350"></canvas>
+      </div>
+    </div>
+    <div id="zoombar">
+      <button class="quiet" id="btnFit" title="Fit canvas to window">Fit</button>
+      <input type="range" id="zoom" min="10" max="200" value="100" aria-label="Zoom">
+      <span id="zoomPct">100%</span>
+    </div>
+    <div id="hint">
+      <div>
+        <h2>One-time setup</h2>
+        <ol>
+          <li><b>Export your template from Photopea:</b> open your design, hide the sample photo and sample text layers (eye icons), then <b>File → Export As → PNG</b>.</li>
+          <li><b>Load that PNG here</b> with “Load template” →, or drop it on this canvas.</li>
+          <li><b>Drag the photo frame</b> over the spot where pictures go, and drag each text into place.</li>
+        </ol>
+        <p>Everything is remembered in this browser. After setup, each new image is just: upload photo, type the name and district, Download PNG.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel">
+    <section>
+      <h3><span class="n">1</span> Template</h3>
+      <div class="row">
+        <button id="btnTemplate" class="grow">Load template (PNG/JPG)</button>
+        <button id="btnClearTemplate" class="quiet" title="Remove template image">Clear</button>
+      </div>
+      <div class="row"><span class="dim" id="tplInfo">none loaded — canvas 1080 × 1350</span></div>
+    </section>
+
+    <section>
+      <h3><span class="n">2</span> Photo</h3>
+      <div class="row">
+        <button id="btnPhoto" class="grow">Upload photo</button>
+        <button id="btnClearPhoto" class="quiet" title="Remove photo">Clear</button>
+      </div>
+      <div class="row">
+        <span class="seg" role="group" aria-label="Photo drag mode">
+          <button id="modeFrame" class="on" title="Dragging moves and resizes the frame on the canvas">Move frame</button>
+          <button id="modeCrop" title="Dragging slides the photo inside the frame">Adjust crop</button>
+        </span>
+      </div>
+      <div class="row">
+        <label for="pZoom">Crop zoom</label>
+        <input type="range" id="pZoom" class="grow" min="100" max="400" value="100">
+        <button class="quiet" id="btnRecenter" title="Reset crop position and zoom">Reset</button>
+      </div>
+      <div class="row">
+        <label for="pRadius">Corner radius</label>
+        <input type="range" id="pRadius" class="grow" min="0" max="50" value="0">
+        <span class="dim" id="pRadiusVal">0%</span>
+      </div>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="pBehind"> Photo behind template <span title="Use when your template PNG has a transparent window the photo should show through">ⓘ</span></label>
+      </div>
+      <div class="row"><span class="dim" id="slotInfo"></span></div>
+    </section>
+
+    <section>
+      <h3><span class="n">3</span> Text <button class="quiet" id="btnAddText" style="margin-left:auto">+ Add field</button></h3>
+      <div id="textList"></div>
+
+      <div id="textEditor" hidden>
+        <div class="row" style="margin-top:0">
+          <input type="text" id="tLabel" style="width:110px" aria-label="Field label" title="Field label (for your reference)">
+          <input type="text" id="tValue" class="grow" aria-label="Text value" placeholder="Text…">
+        </div>
+        <div class="row">
+          <select id="tFont" class="grow" aria-label="Font"></select>
+          <button id="btnFontFile" title="Load the .ttf / .otf / .woff font file your template uses">+ Font file</button>
+        </div>
+        <div class="row">
+          <label for="tSize">Size</label><input type="number" id="tSize" min="6" max="600" step="1">
+          <input type="color" id="tColor" aria-label="Text color">
+          <span class="seg" role="group" aria-label="Style">
+            <button id="tBold" title="Bold"><b>B</b></button>
+            <button id="tItalic" title="Italic"><i>I</i></button>
+            <button id="tUpper" title="ALL CAPS">AA</button>
+          </span>
+        </div>
+        <div class="row">
+          <span class="seg" role="group" aria-label="Alignment">
+            <button data-align="left">⟸</button><button data-align="center">≡</button><button data-align="right">⟹</button>
+          </span>
+          <label for="tSpacing">Spacing</label>
+          <input type="number" id="tSpacing" min="-10" max="80" step="0.5" title="Letter spacing (px)">
+        </div>
+        <div class="row">
+          <label class="check"><input type="checkbox" id="tShadow"> Shadow</label>
+          <label class="check"><input type="checkbox" id="tOutline"> Outline</label>
+          <input type="color" id="tOutlineColor" aria-label="Outline color">
+          <input type="number" id="tOutlineW" min="1" max="40" step="1" title="Outline width (px)" style="width:54px">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3><span class="n">4</span> Export</h3>
+      <div class="row">
+        <label for="fmt">Format</label>
+        <select id="fmt"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option></select>
+        <button class="primary grow" id="btnDownload2">Download</button>
+      </div>
+      <div class="row"><span class="dim">Exports at full template resolution. Filename comes from your text values.</span></div>
+      <div class="row" style="margin-top:14px">
+        <button class="quiet" id="btnReset" style="color:var(--warn)">Reset everything…</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="toast" role="status"></div>
+<input type="file" id="fileTemplate" accept="image/*" hidden>
+<input type="file" id="filePhoto" accept="image/*" hidden>
+<input type="file" id="fileFont" accept=".ttf,.otf,.woff,.woff2,font/ttf,font/otf,font/woff,font/woff2" hidden>
+<input type="file" id="filePack" accept=".json,application/json" hidden>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const cv = $('#cv'), ov = $('#ov');
+const ctx = cv.getContext('2d'), octx = ov.getContext('2d');
+const KEY = 'template-studio-v1';
+const SYS_FONTS = ['Arial','Arial Black','Helvetica','Impact','Georgia','Times New Roman','Trebuchet MS','Verdana','Tahoma','Palatino','Garamond','Courier New','Brush Script MT','Comic Sans MS'];
+
+const state = {
+  w: 1080, h: 1350,
+  template: null,            // {src, img}
+  photo: null,               // {src, img, iw, ih}
+  slot: {x: 270, y: 200, w: 540, h: 660},
+  pZoom: 1, panX: 0, panY: 0, radius: 0, behind: false,
+  texts: [
+    mkText('Name', 'FIRSTNAME LASTNAME', 540, 1120, 88, '#1C2130'),
+    mkText('District', 'DISTRICT 5', 540, 1215, 48, '#3557D4'),
+  ],
+  fonts: [],                 // {name, src}
+  sel: null,                 // 'photo' | text id
+  cropMode: false,
+};
+let uid = 3;
+function mkText(label, value, x, y, size, color){
+  return {id: 't' + Math.floor(x + y + size) + '_' + label, label, value, x, y, size,
+    font: 'Arial Black', color, bold: false, italic: false, upper: false,
+    align: 'center', spacing: 0, shadow: false, outline: false, outlineColor: '#FFFFFF', outlineW: 6};
+}
+
+/* ── helpers ─────────────────────────────────────────── */
+const toast = (msg, ms = 2600) => { const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._h); toast._h = setTimeout(() => t.classList.remove('show'), ms); };
+const setStatus = (msg, ok) => { const s = $('#status'); s.textContent = msg; s.classList.toggle('ok', !!ok); };
+const readDataURL = f => new Promise((res, rej) => { const r = new FileReader();
+  r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(f); });
+const loadImg = src => new Promise((res, rej) => { const i = new Image();
+  i.onload = () => res(i); i.onerror = () => rej(new Error('image failed to load')); i.src = src; });
+
+async function fileToPhoto(file){
+  // createImageBitmap honors EXIF orientation; fall back to a plain <img>.
+  try {
+    const bmp = await createImageBitmap(file, {imageOrientation: 'from-image'});
+    const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+    c.getContext('2d').drawImage(bmp, 0, 0); bmp.close && bmp.close();
+    const keepAlpha = file.type === 'image/png' || file.type === 'image/webp';
+    const src = c.toDataURL(keepAlpha ? 'image/png' : 'image/jpeg', 0.92);
+    return {src, img: c, iw: c.width, ih: c.height};
+  } catch (e) {
+    const src = await readDataURL(file);
+    const img = await loadImg(src);
+    return {src, img, iw: img.naturalWidth, ih: img.naturalHeight};
+  }
+}
+
+/* ── view (zoom / fit) ───────────────────────────────── */
+const view = {fit: true, z: 1};
+function applyView(){
+  const stage = $('#stage');
+  if (view.fit){
+    const availW = stage.clientWidth - 56, availH = stage.clientHeight - 56;
+    view.z = Math.max(0.02, Math.min(availW / state.w, availH / state.h));
+  }
+  $('#canvasBox').style.width = (state.w * view.z) + 'px';
+  $('#canvasBox').style.height = (state.h * view.z) + 'px';
+  $('#zoom').value = Math.round(Math.min(2, Math.max(0.1, view.z)) * 100);
+  $('#zoomPct').textContent = Math.round(view.z * 100) + '%';
+}
+new ResizeObserver(() => { if (view.fit) applyView(); }).observe($('#stage'));
+$('#zoom').addEventListener('input', e => { view.fit = false; view.z = e.target.value / 100; applyView(); });
+$('#btnFit').addEventListener('click', () => { view.fit = true; applyView(); });
+
+function resizeCanvas(w, h){
+  state.w = w; state.h = h;
+  cv.width = ov.width = w; cv.height = ov.height = h;
+  applyView(); render();
+}
+
+/* ── rendering ───────────────────────────────────────── */
+function slotPath(c){
+  const {x, y, w, h} = state.slot;
+  const r = Math.min(w, h) * (state.radius / 100);
+  c.beginPath();
+  if (c.roundRect) c.roundRect(x, y, w, h, r);
+  else c.rect(x, y, w, h);
+}
+function drawPhoto(c){
+  if (!state.photo) return;
+  const {slot, photo} = state;
+  const base = Math.max(slot.w / photo.iw, slot.h / photo.ih);
+  const s = base * state.pZoom;
+  const dw = photo.iw * s, dh = photo.ih * s;
+  const dx = slot.x + (slot.w - dw) / 2 + state.panX;
+  const dy = slot.y + (slot.h - dh) / 2 + state.panY;
+  c.save(); slotPath(c); c.clip();
+  c.drawImage(photo.img, dx, dy, dw, dh);
+  c.restore();
+}
+function fontString(t){
+  // always quote: bare names that start with a digit make the whole shorthand invalid
+  const fam = '"' + String(t.font).replace(/"/g, '') + '"';
+  return (t.italic ? 'italic ' : '') + (t.bold ? '700 ' : '400 ') + t.size + 'px ' + fam + ', sans-serif';
+}
+function drawText(c, t){
+  if (!t.value) return;
+  c.save();
+  c.font = fontString(t);
+  if ('letterSpacing' in c) c.letterSpacing = (t.spacing || 0) + 'px';
+  c.textAlign = t.align; c.textBaseline = 'alphabetic';
+  const str = t.upper ? t.value.toUpperCase() : t.value;
+  if (t.shadow){ c.shadowColor = 'rgba(0,0,0,.45)'; c.shadowBlur = t.size * .14; c.shadowOffsetY = t.size * .05; }
+  if (t.outline){ c.strokeStyle = t.outlineColor; c.lineWidth = t.outlineW; c.lineJoin = 'round'; c.miterLimit = 2; c.strokeText(str, t.x, t.y); }
+  c.fillStyle = t.color; c.fillText(str, t.x, t.y);
+  c.restore();
+}
+function textBox(t){
+  ctx.save(); ctx.font = fontString(t);
+  if ('letterSpacing' in ctx) ctx.letterSpacing = (t.spacing || 0) + 'px';
+  const str = t.upper ? (t.value || ' ').toUpperCase() : (t.value || ' ');
+  const m = ctx.measureText(str); ctx.restore();
+  const asc = m.actualBoundingBoxAscent || t.size * .8, desc = m.actualBoundingBoxDescent || t.size * .2;
+  const w = m.width;
+  const left = t.align === 'center' ? t.x - w / 2 : t.align === 'right' ? t.x - w : t.x;
+  return {left, top: t.y - asc, w, h: asc + desc};
+}
+function render(final){
+  ctx.clearRect(0, 0, state.w, state.h);
+  if (!state.behind && state.template) ctx.drawImage(state.template.img, 0, 0, state.w, state.h);
+  if (state.behind){ drawPhoto(ctx); if (state.template) ctx.drawImage(state.template.img, 0, 0, state.w, state.h); }
+  else drawPhoto(ctx);
+  if (!final && !state.photo){
+    ctx.save(); ctx.strokeStyle = 'rgba(110,139,255,.9)'; ctx.setLineDash([10, 8]); ctx.lineWidth = 3;
+    slotPath(ctx); ctx.stroke();
+    ctx.fillStyle = 'rgba(110,139,255,.9)'; ctx.font = '600 ' + Math.max(16, state.w * .022) + 'px ' + '"Avenir Next","Segoe UI",sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('PHOTO', state.slot.x + state.slot.w / 2, state.slot.y + state.slot.h / 2);
+    ctx.restore();
+  }
+  for (const t of state.texts) drawText(ctx, t);
+  drawOverlay();
+}
+function handleRects(){
+  const {x, y, w, h} = state.slot, s = 7 / view.z;
+  return [
+    {cx: x, cy: y, k: 'nw'}, {cx: x + w, cy: y, k: 'ne'},
+    {cx: x, cy: y + h, k: 'sw'}, {cx: x + w, cy: y + h, k: 'se'},
+  ].map(o => ({...o, x: o.cx - s, y: o.cy - s, w: s * 2, h: s * 2}));
+}
+function drawOverlay(){
+  octx.clearRect(0, 0, state.w, state.h);
+  const lw = Math.max(1, 1.4 / view.z);
+  octx.lineWidth = lw;
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#3557D4';
+  if (state.sel === 'photo'){
+    octx.strokeStyle = accent; octx.setLineDash([8 / view.z, 6 / view.z]);
+    slotPath(octx); octx.stroke(); octx.setLineDash([]);
+    for (const r of handleRects()){
+      octx.fillStyle = accent; octx.fillRect(r.x, r.y, r.w, r.h);
+      octx.strokeStyle = '#fff'; octx.strokeRect(r.x, r.y, r.w, r.h);
+    }
+  } else if (state.sel){
+    const t = state.texts.find(t => t.id === state.sel);
+    if (t){ const b = textBox(t), p = 6 / view.z;
+      octx.strokeStyle = accent; octx.setLineDash([6 / view.z, 5 / view.z]);
+      octx.strokeRect(b.left - p, b.top - p, b.w + p * 2, b.h + p * 2); octx.setLineDash([]);
+    }
+  }
+}
+
+/* ── pointer interaction ─────────────────────────────── */
+function toCanvasPt(e){
+  const r = ov.getBoundingClientRect();
+  return {x: (e.clientX - r.left) * (state.w / r.width), y: (e.clientY - r.top) * (state.h / r.height)};
+}
+function inSlot(p){ const s = state.slot; return p.x >= s.x && p.x <= s.x + s.w && p.y >= s.y && p.y <= s.y + s.h; }
+function hitTest(p){
+  if (state.sel === 'photo') for (const r of handleRects())
+    if (p.x >= r.x - r.w && p.x <= r.x + r.w * 2 && p.y >= r.y - r.h && p.y <= r.y + r.h * 2) return {type: 'handle', k: r.k};
+  if (state.cropMode && state.photo && inSlot(p)) return {type: 'photo'};
+  for (let i = state.texts.length - 1; i >= 0; i--){
+    const t = state.texts[i], b = textBox(t), pad = 8 / view.z;
+    if (p.x >= b.left - pad && p.x <= b.left + b.w + pad && p.y >= b.top - pad && p.y <= b.top + b.h + pad) return {type: 'text', t};
+  }
+  if (inSlot(p)) return {type: 'photo'};
+  return null;
+}
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+function clampText(t){ t.x = clamp(t.x, 0, state.w); t.y = clamp(t.y, 0, state.h); }
+function clampSlot(){ const s = state.slot, m = 40;
+  s.x = clamp(s.x, m - s.w, state.w - m); s.y = clamp(s.y, m - s.h, state.h - m); }
+let drag = null;
+ov.addEventListener('pointerdown', e => {
+  if (drag) return; // a second finger must not hijack an active drag
+  if (e.button !== 0 && e.pointerType === 'mouse') return;
+  const p = toCanvasPt(e), hit = hitTest(p);
+  if (!hit){ select(null); return; }
+  ov.setPointerCapture(e.pointerId);
+  if (hit.type === 'handle'){
+    drag = {pid: e.pointerId, kind: 'resize', k: hit.k, start: p, slot0: {...state.slot}};
+  } else if (hit.type === 'text'){
+    select(hit.t.id);
+    drag = {pid: e.pointerId, kind: 'text', t: hit.t, dx: p.x - hit.t.x, dy: p.y - hit.t.y};
+  } else {
+    select('photo');
+    drag = state.cropMode && state.photo
+      ? {pid: e.pointerId, kind: 'crop', start: p, pan0: {x: state.panX, y: state.panY}}
+      : {pid: e.pointerId, kind: 'slot', dx: p.x - state.slot.x, dy: p.y - state.slot.y};
+  }
+  e.preventDefault();
+});
+ov.addEventListener('pointermove', e => {
+  if (drag && e.pointerId !== drag.pid) return;
+  const p = toCanvasPt(e);
+  if (!drag){
+    const hit = hitTest(p);
+    ov.style.cursor = hit ? (hit.type === 'handle' ? (hit.k === 'nw' || hit.k === 'se' ? 'nwse-resize' : 'nesw-resize') : 'move') : 'default';
+    return;
+  }
+  if (drag.kind === 'text'){ drag.t.x = Math.round(p.x - drag.dx); drag.t.y = Math.round(p.y - drag.dy); clampText(drag.t); }
+  else if (drag.kind === 'slot'){ state.slot.x = Math.round(p.x - drag.dx); state.slot.y = Math.round(p.y - drag.dy); clampSlot(); }
+  else if (drag.kind === 'crop'){ state.panX = drag.pan0.x + (p.x - drag.start.x); state.panY = drag.pan0.y + (p.y - drag.start.y); }
+  else if (drag.kind === 'resize'){
+    const s0 = drag.slot0, dx = p.x - drag.start.x, dy = p.y - drag.start.y, min = 40, s = state.slot, k = drag.k;
+    let x = s0.x, y = s0.y, w = s0.w, h = s0.h;
+    if (k.includes('w')){ x = Math.min(s0.x + dx, s0.x + s0.w - min); w = s0.w + (s0.x - x); }
+    if (k.includes('e')){ w = Math.max(min, s0.w + dx); }
+    if (k.includes('n')){ y = Math.min(s0.y + dy, s0.y + s0.h - min); h = s0.h + (s0.y - y); }
+    if (k.includes('s')){ h = Math.max(min, s0.h + dy); }
+    s.x = Math.round(x); s.y = Math.round(y); s.w = Math.round(w); s.h = Math.round(h);
+  }
+  updateSlotInfo(); render();
+});
+const endDrag = e => { if (drag && e.pointerId === drag.pid){ drag = null; save(); } };
+ov.addEventListener('pointerup', endDrag);
+ov.addEventListener('pointercancel', endDrag);
+
+window.addEventListener('keydown', e => {
+  const tag = (document.activeElement || {}).tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON') return;
+  if (!state.sel) return;
+  const step = e.shiftKey ? 10 : 1;
+  const t = state.sel === 'photo' ? null : state.texts.find(t => t.id === state.sel);
+  const moved = {ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step]}[e.key];
+  if (moved){
+    if (t){ t.x += moved[0]; t.y += moved[1]; clampText(t); }
+    else { state.slot.x += moved[0]; state.slot.y += moved[1]; clampSlot(); }
+    e.preventDefault(); render(); save(); updateSlotInfo();
+  } else if ((e.key === 'Delete' || e.key === 'Backspace') && t){
+    removeText(t.id); e.preventDefault();
+  }
+});
+
+/* ── selection & panel sync ──────────────────────────── */
+function select(sel){
+  state.sel = sel;
+  renderTextList(); syncTextEditor(); drawOverlay();
+}
+function updateSlotInfo(){
+  $('#slotInfo').textContent = 'frame ' + Math.round(state.slot.w) + ' × ' + Math.round(state.slot.h) +
+    ' @ ' + Math.round(state.slot.x) + ',' + Math.round(state.slot.y);
+}
+function renderTextList(){
+  const box = $('#textList'); box.innerHTML = '';
+  for (const t of state.texts){
+    const row = document.createElement('div');
+    row.className = 'trow' + (state.sel === t.id ? ' sel' : '');
+    row.tabIndex = 0; row.setAttribute('role', 'button');
+    row.setAttribute('aria-pressed', state.sel === t.id ? 'true' : 'false');
+    row.innerHTML = '<span class="lbl"></span><span class="val"></span><button class="del" title="Delete field" aria-label="Delete field">✕</button>';
+    row.querySelector('.lbl').textContent = t.label;
+    row.querySelector('.val').textContent = t.value || '(empty)';
+    row.addEventListener('click', () => select(t.id));
+    row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); select(t.id); } });
+    row.querySelector('.del').addEventListener('click', e => { e.stopPropagation(); removeText(t.id); });
+    box.appendChild(row);
+  }
+}
+function removeText(id){
+  state.texts = state.texts.filter(t => t.id !== id);
+  if (state.sel === id) state.sel = null;
+  renderTextList(); syncTextEditor(); render(); save();
+}
+function selText(){ return state.texts.find(t => t.id === state.sel) || null; }
+function refreshFontOptions(){
+  const sel = $('#tFont'); sel.innerHTML = '';
+  const groups = [['Your fonts', state.fonts.map(f => f.name)], ['System fonts', SYS_FONTS]];
+  for (const [label, names] of groups){
+    if (!names.length) continue;
+    const g = document.createElement('optgroup'); g.label = label;
+    for (const n of names){ const o = document.createElement('option'); o.value = o.textContent = n; o.style.fontFamily = '"' + n + '"'; g.appendChild(o); }
+    sel.appendChild(g);
+  }
+}
+function syncTextEditor(){
+  const t = selText(), ed = $('#textEditor');
+  ed.hidden = !t;
+  if (!t) return;
+  $('#tLabel').value = t.label; $('#tValue').value = t.value;
+  if (![...$('#tFont').options].some(o => o.value === t.font)){ const o = document.createElement('option'); o.value = o.textContent = t.font; $('#tFont').appendChild(o); }
+  $('#tFont').value = t.font;
+  $('#tSize').value = t.size; $('#tColor').value = t.color;
+  $('#tBold').classList.toggle('on', t.bold); $('#tItalic').classList.toggle('on', t.italic); $('#tUpper').classList.toggle('on', t.upper);
+  document.querySelectorAll('[data-align]').forEach(b => b.classList.toggle('on', b.dataset.align === t.align));
+  $('#tSpacing').value = t.spacing;
+  $('#tShadow').checked = t.shadow; $('#tOutline').checked = t.outline;
+  $('#tOutlineColor').value = t.outlineColor; $('#tOutlineW').value = t.outlineW;
+}
+function bindText(id, prop, ev, read){
+  $(id).addEventListener(ev, e => { const t = selText(); if (!t) return;
+    t[prop] = read(e.target); renderTextList(); render(); save(); });
+}
+bindText('#tLabel', 'label', 'input', el => el.value);
+bindText('#tValue', 'value', 'input', el => el.value);
+bindText('#tFont', 'font', 'change', el => el.value);
+bindText('#tSize', 'size', 'input', el => Math.max(6, +el.value || 6));
+bindText('#tColor', 'color', 'input', el => el.value);
+bindText('#tSpacing', 'spacing', 'input', el => +el.value || 0);
+bindText('#tShadow', 'shadow', 'change', el => el.checked);
+bindText('#tOutline', 'outline', 'change', el => el.checked);
+bindText('#tOutlineColor', 'outlineColor', 'input', el => el.value);
+bindText('#tOutlineW', 'outlineW', 'input', el => Math.max(1, +el.value || 1));
+for (const [id, prop] of [['#tBold', 'bold'], ['#tItalic', 'italic'], ['#tUpper', 'upper']])
+  $(id).addEventListener('click', () => { const t = selText(); if (!t) return;
+    t[prop] = !t[prop]; syncTextEditor(); renderTextList(); render(); save(); });
+document.querySelectorAll('[data-align]').forEach(b => b.addEventListener('click', () => {
+  const t = selText(); if (!t) return; t.align = b.dataset.align; syncTextEditor(); render(); save(); }));
+
+$('#btnAddText').addEventListener('click', () => {
+  const t = mkText('Field ' + (++uid), 'New text', state.w / 2, state.h / 2, Math.round(state.w / 18), '#1C2130');
+  t.id = 'u' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
+  state.texts.push(t); select(t.id); render(); save();
+});
+
+/* ── template / photo loading ────────────────────────── */
+async function setTemplate(src){
+  const img = await loadImg(src);
+  state.template = {src, img};
+  const w = img.naturalWidth, h = img.naturalHeight;
+  const scaleX = w / state.w, scaleY = h / state.h;
+  if (w !== state.w || h !== state.h){
+    // keep layout roughly in place when canvas size changes
+    state.slot.x *= scaleX; state.slot.w *= scaleX; state.slot.y *= scaleY; state.slot.h *= scaleY;
+    state.panX *= scaleX; state.panY *= scaleY;
+    for (const t of state.texts){
+      t.x *= scaleX; t.y *= scaleY; t.size = Math.round(t.size * scaleY);
+      t.spacing *= scaleY; t.outlineW = Math.max(1, Math.round(t.outlineW * scaleY));
+    }
+  }
+  resizeCanvas(w, h);
+  $('#tplInfo').textContent = 'template ' + w + ' × ' + h + ' px';
+  $('#hint').style.display = 'none';
+  updateSlotInfo(); render(); save();
+}
+$('#btnTemplate').addEventListener('click', () => $('#fileTemplate').click());
+$('#fileTemplate').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  try { await setTemplate(await readDataURL(f)); toast('Template loaded — drag the photo frame and texts into place'); }
+  catch (err){ toast('Could not load that image'); }
+});
+$('#btnClearTemplate').addEventListener('click', () => {
+  state.template = null; $('#tplInfo').textContent = 'none loaded — canvas ' + state.w + ' × ' + state.h;
+  render(); save();
+});
+
+$('#btnPhoto').addEventListener('click', () => $('#filePhoto').click());
+$('#filePhoto').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  try {
+    state.photo = await fileToPhoto(f);
+    state.panX = state.panY = 0; state.pZoom = 1; $('#pZoom').value = 100;
+    render(); save(); toast('Photo placed — use “Adjust crop” to fine-tune');
+  } catch (err){ toast('Could not load that photo'); }
+});
+$('#btnClearPhoto').addEventListener('click', () => { state.photo = null; render(); save(); });
+
+const setCropMode = on => { state.cropMode = on;
+  $('#modeFrame').classList.toggle('on', !on); $('#modeCrop').classList.toggle('on', on);
+  if (on) select('photo'); };
+$('#modeFrame').addEventListener('click', () => setCropMode(false));
+$('#modeCrop').addEventListener('click', () => setCropMode(true));
+$('#pZoom').addEventListener('input', e => { state.pZoom = e.target.value / 100; render(); save(); });
+$('#btnRecenter').addEventListener('click', () => { state.pZoom = 1; state.panX = state.panY = 0; $('#pZoom').value = 100; render(); save(); });
+$('#pRadius').addEventListener('input', e => { state.radius = +e.target.value;
+  $('#pRadiusVal').textContent = state.radius + '%'; render(); save(); });
+$('#pBehind').addEventListener('change', e => { state.behind = e.target.checked; render(); save(); });
+
+/* ── fonts ───────────────────────────────────────────── */
+async function registerFont(name, src){
+  const face = new FontFace(name, 'url(' + src + ')');
+  await face.load(); document.fonts.add(face);
+}
+$('#btnFontFile').addEventListener('click', () => $('#fileFont').click());
+$('#fileFont').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  try {
+    const src = await readDataURL(f);
+    const name = f.name.replace(/\.[^.]+$/, '').replace(/[^\w \-]/g, '').trim() || 'Custom font';
+    await registerFont(name, src);
+    if (!state.fonts.some(x => x.name === name)) state.fonts.push({name, src});
+    refreshFontOptions();
+    const t = selText(); if (t){ t.font = name; syncTextEditor(); }
+    render(); save(); toast('Font “' + name + '” loaded');
+  } catch (err){ toast('Could not load that font file'); }
+});
+
+/* ── drag & drop ─────────────────────────────────────── */
+// document-level guard: a drop that misses the stage must never navigate the tab away
+;['dragover', 'drop'].forEach(ev => document.addEventListener(ev, e => e.preventDefault()));
+$('#stageWrap').addEventListener('drop', async e => {
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (!f) return;
+  if (/\.(ttf|otf|woff2?)$/i.test(f.name)){ $('#fileFont').files = e.dataTransfer.files; $('#fileFont').dispatchEvent(new Event('change')); return; }
+  if (!f.type.startsWith('image/')) return;
+  if (!state.template){ try { await setTemplate(await readDataURL(f)); toast('Template loaded'); } catch(_){ toast('Could not load that image'); } }
+  else { try { state.photo = await fileToPhoto(f); state.panX = state.panY = 0; state.pZoom = 1; $('#pZoom').value = 100; render(); save(); toast('Photo placed'); } catch(_){ toast('Could not load that photo'); } }
+});
+// dropping a font via the dispatched change event reads from input.files — set above
+
+/* ── persistence ─────────────────────────────────────── */
+function pack(includePhoto){
+  return {v: 1, w: state.w, h: state.h,
+    slot: state.slot, pZoom: state.pZoom, panX: state.panX, panY: state.panY,
+    radius: state.radius, behind: state.behind, texts: state.texts, fonts: state.fonts,
+    template: state.template ? state.template.src : null,
+    photo: includePhoto && state.photo ? state.photo.src : null};
+}
+let saveTimer = null, suppressSave = false;
+function save(){
+  if (suppressSave) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    const attempts = [
+      [() => pack(true), 'Layout saved in this browser'],
+      [() => pack(false), 'Layout saved (photo too large to auto-save)'],
+      [() => ({...pack(false), template: null}), 'Layout saved without images — keep an “Export pack” copy'],
+      [() => ({...pack(false), template: null, fonts: []}), 'Layout saved without images/fonts — use “Export pack”'],
+    ];
+    for (const [a, msg] of attempts){
+      try { localStorage.setItem(KEY, JSON.stringify(a())); setStatus(msg, true); return; }
+      catch (e){ /* quota — try smaller */ }
+    }
+    setStatus('Too large to auto-save — use “Export pack”');
+  }, 350);
+}
+async function applyPack(d){
+  // never throws partway: applies everything it can, reports what failed,
+  // and suppresses saves so a partial state can't overwrite good stored data
+  suppressSave = true;
+  try {
+    state.slot = d.slot || state.slot;
+    state.pZoom = d.pZoom || 1; state.panX = d.panX || 0; state.panY = d.panY || 0;
+    state.radius = d.radius || 0; state.behind = !!d.behind;
+    if (Array.isArray(d.texts)) state.texts = d.texts;
+    state.fonts = [];
+    for (const f of (d.fonts || [])){
+      try { await registerFont(f.name, f.src); state.fonts.push(f); } catch (e){ toast('Font “' + f.name + '” failed to load'); }
+    }
+    refreshFontOptions();
+    if (d.w && d.h && (d.w !== state.w || d.h !== state.h)) resizeCanvas(d.w, d.h);
+    if (d.template){ try { await setTemplate(d.template); } catch (e){ toast('Stored template image could not be loaded'); } }
+    if (d.photo){
+      try { const img = await loadImg(d.photo); state.photo = {src: d.photo, img, iw: img.naturalWidth, ih: img.naturalHeight}; }
+      catch (e){ toast('Stored photo could not be loaded'); }
+    }
+    $('#pZoom').value = Math.round(state.pZoom * 100);
+    $('#pRadius').value = state.radius; $('#pRadiusVal').textContent = state.radius + '%';
+    $('#pBehind').checked = state.behind;
+    renderTextList(); syncTextEditor(); updateSlotInfo(); applyView(); render();
+  } finally { suppressSave = false; }
+}
+async function restore(){
+  let d = null;
+  try { d = JSON.parse(localStorage.getItem(KEY)); } catch (e){}
+  if (!d) return false;
+  try { await applyPack(d); setStatus('Layout restored', true); return true; }
+  catch (e){ toast('Saved layout could not be fully restored'); return false; }
+}
+
+$('#btnPack').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(pack(false))], {type: 'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'template-pack.json'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  toast('Pack exported — import it on any device to reuse this template');
+});
+$('#btnImportPack').addEventListener('click', () => $('#filePack').click());
+$('#filePack').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  try { await applyPack(JSON.parse(await f.text())); save(); toast('Pack imported'); }
+  catch (err){ toast('That file is not a valid template pack'); }
+});
+$('#btnReset').addEventListener('click', () => {
+  if (!confirm('Clear the saved template, layout and fonts from this browser?')) return;
+  suppressSave = true; clearTimeout(saveTimer); // a pending debounced save must not resurrect the data
+  localStorage.removeItem(KEY); location.reload();
+});
+
+/* ── export ──────────────────────────────────────────── */
+function slug(){
+  const parts = state.texts.slice(0, 2).map(t => (t.value || '').trim()).filter(Boolean);
+  const s = parts.join('-').replace(/[^\w\- ]+/g, '').replace(/\s+/g, '-');
+  return s || 'template';
+}
+async function download(){
+  try { await document.fonts.ready; } catch (e){}
+  render(true);
+  const mime = $('#fmt').value, ext = mime === 'image/png' ? 'png' : 'jpg';
+  let exportCv = cv;
+  if (mime === 'image/jpeg'){
+    exportCv = document.createElement('canvas'); exportCv.width = state.w; exportCv.height = state.h;
+    const c = exportCv.getContext('2d'); c.fillStyle = '#fff'; c.fillRect(0, 0, state.w, state.h); c.drawImage(cv, 0, 0);
+  }
+  exportCv.toBlob(b => {
+    if (!b){ toast('Export failed — try PNG'); render(false); return; }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b);
+    a.download = slug() + '.' + ext; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    render(false);
+  }, mime, 0.92);
+}
+$('#btnDownload').addEventListener('click', download);
+$('#btnDownload2').addEventListener('click', download);
+
+/* ── boot ────────────────────────────────────────────── */
+// the selection overlay rasterizes --accent: re-draw when the theme changes
+try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawOverlay); } catch (e){}
+new MutationObserver(drawOverlay).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+
+refreshFontOptions();
+updateSlotInfo();
+applyView();
+restore().then(loaded => {
+  if (loaded) $('#hint').style.display = state.template ? 'none' : '';
+  render();
+});
+render();
+</script>
+
+</html>
